@@ -18,18 +18,18 @@ public class MainActivity extends AppCompatActivity {
     public void regOnClickListener(View view ){
         FragmentManager fragmentManager= getSupportFragmentManager();
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragmentContainer, new RegClientFragment()).commit();
+        fragmentTransaction.add(R.id.fragmentContainer, new RegClientFragment()).addToBackStack("ClientRegFragment").commit();
     }
     public void reg2OnClickListener(View view){
         FragmentManager fragmentManager= getSupportFragmentManager();
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragmentContainer, new RegCookFragment()).commit();
+        fragmentTransaction.add(R.id.fragmentContainer, new RegCookFragment()).addToBackStack("CookRegFragment").commit();
 
     }
     public void loginOnClickListener(View view){
         FragmentManager fragmentManager= getSupportFragmentManager();
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragmentContainer, new LoginFragment()).commit();
+        fragmentTransaction.add(R.id.fragmentContainer, new LoginFragment()).addToBackStack("LoginFragment").commit();
 
     }
 }
