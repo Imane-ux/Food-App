@@ -2,6 +2,7 @@ package com.example.mealyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
@@ -16,16 +17,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void regOnClickListener(View view ){
         FragmentManager fragmentManager= getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragmentContainer, RegClientFragment.class,null).addToBackStack("Dk").commit();
+        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragmentContainer, new RegClientFragment()).commit();
     }
     public void reg2OnClickListener(View view){
         FragmentManager fragmentManager= getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragmentContainer, RegCookFragment.class,null).addToBackStack("Dka").commit();
+        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragmentContainer, new RegCookFragment()).commit();
 
     }
     public void loginOnClickListener(View view){
         FragmentManager fragmentManager= getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragmentContainer, LoginFragment.class,null).addToBackStack("Dkwa").commit();
+        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragmentContainer, new LoginFragment()).commit();
 
     }
 }
