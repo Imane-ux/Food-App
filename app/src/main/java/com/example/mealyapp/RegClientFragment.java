@@ -28,7 +28,7 @@ public class RegClientFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_admin, container, false);
+        View view =inflater.inflate(R.layout.fragment_reg_client, container, false);
         mAuth = FirebaseAuth.getInstance();
 
         //put your code here. "onclick listener dor the reg btn/ get the inputs as texts, check if they are empty and make

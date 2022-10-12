@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#FFC107"
+    android:backgroundTint="#FF9800"
+    tools:context=".StartFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="414dp"
+            android:layout_height="738dp"
+            android:src="@drawable/designimg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnRegCook"
+            android:layout_width="141dp"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:backgroundTint="#0E0E0E"
+            android:onClick="reg2OnClickListener"
+            android:text="Become our Cook"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.957" />
+
+        <Button
+            android:id="@+id/btnRegClient"
+            android:layout_width="141dp"
+            android:layout_height="70dp"
+            android:backgroundTint="#0E0E0E"
+
+            android:text="Become our Client"
+            app:layout_constraintBottom_toTopOf="@+id/btnRegCook"
+            app:layout_constraintEnd_toStartOf="@+id/btnLog"
+            app:layout_constraintHorizontal_bias="0.125"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/btnLog"
+            android:layout_width="134dp"
+            android:layout_height="107dp"
+            android:backgroundTint="#040303"
+            android:onClick="loginOnClickListener"
+            android:text="log in"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.942"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.921" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -13,23 +13,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    public void regOnClickListener(View view ){
         FragmentManager fragmentManager= getSupportFragmentManager();
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragmentContainer, new RegClientFragment()).addToBackStack("ClientRegFragment").commit();
+        fragmentTransaction.add(R.id.fragmentContainer, new StartFragment()).addToBackStack(null).commit();
     }
-    public void reg2OnClickListener(View view){
-        FragmentManager fragmentManager= getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragmentContainer, new RegCookFragment()).addToBackStack("CookRegFragment").commit();
 
-    }
-    public void loginOnClickListener(View view){
-        FragmentManager fragmentManager= getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragmentContainer, new LoginFragment()).addToBackStack("LoginFragment").commit();
-
-    }
 }

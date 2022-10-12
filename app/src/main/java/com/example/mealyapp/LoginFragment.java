@@ -24,7 +24,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_admin, container, false);
+        View view =inflater.inflate(R.layout.fragment_login, container, false);
         mAuth = FirebaseAuth.getInstance();
 
         //put your code here for name, email, address... Use the login user method below once u get the strings.
@@ -37,7 +37,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onSuccess(AuthResult authResult) {
                 Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
-                // code to start a new fragment here
+                // code to start a new fragment here (welcome Client fragment)
                 // check if u need to remove the fragment b4 passing to the next.(prolly yes)
 
             }
