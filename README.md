@@ -4,7 +4,7 @@
 
 <p> 
 Imane - ADD STUDENT NUMBER <br>
-Nida Taj - ADD STUDENT NUMBER <br>
+Nida Taj - 300239050 <br>
 Noah Ndahirwa - 300152285 <br>
 Steven Wilson - 300220675 <br>
 </p>
