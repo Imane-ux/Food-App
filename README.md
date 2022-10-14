@@ -3,14 +3,14 @@
 ### SEG 2105 - Introduction to Software Engineering
 
 <p> 
-Imane - ADD STUDENT NUMBER <br>
+Imane Amine - 300251048 <br>
 Nida Taj - 300239050 <br>
 Noah Ndahirwa - 300152285 <br>
 Steven Wilson - 300220675 <br>
 </p>
 
 <p>
-We developed an Ottawa-based meal sharing application called “Food-App” where local cooks
+We developed an Ottawa-based meal sharing application called “Mealy-App” where local cooks
 can sell meals to clients from their home. The application supports three types of users:
 </p>
 
