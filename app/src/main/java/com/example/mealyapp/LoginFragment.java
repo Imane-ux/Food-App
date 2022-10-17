@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,31 +37,23 @@ public class LoginFragment extends Fragment {
         Button loginButton = (Button) view.findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
-<<<<<<< HEAD
            @Override
            public void onClick(View v) {
-               if(emailInput.getText().toString().equals("Admin") && passwordInput.getText().toString().equals("group28")){
-                   Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
-                   FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                   fragmentTransaction.replace(R.id.fragmentContainer, new AdminFragment()).commit();
+               try {
+                   if(emailInput.getText().toString().equals("Admin") && passwordInput.getText().toString().equals("group28")){
+                       Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
+                       FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                       fragmentTransaction.replace(R.id.fragmentContainer, new AdminFragment()).commit();
+                   }
+                   else {
+                       loginUser(emailInput.getText().toString(), passwordInput.getText().toString());
+                   }
                }
-               else {
-                   loginUser(emailInput.getText().toString(), passwordInput.getText().toString());
+               catch (Exception e){
+                   Toast.makeText(getActivity(), "Incorrect credentials!", Toast.LENGTH_SHORT).show();
                }
+
            }
-=======
-            @Override
-            public void onClick(View v) {
-                if(emailInput.getText().toString().equals("Admin") && passwordInput.getText().toString().equals("group28")){
-                    Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
-                    FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentContainer, new AdminFragment()).commit();
-                }
-                else {
-                    loginUser(emailInput.getText().toString(), passwordInput.getText().toString());
-                }
-            }
->>>>>>> 7c1d8b5ea3622482ab48a6a0987f753370e123ea
         });
 
 
@@ -78,27 +71,10 @@ public class LoginFragment extends Fragment {
 
                 FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, new ClientPageFragment()).commit();
-                return;
                 // code to start a new fragment here (welcome Client fragment)
                 // check if u need to remove the fragment b4 passing to the next.(prolly yes)
 
             }
         });
-
-        Toast.makeText(getActivity(), "Incorrect credentials!", Toast.LENGTH_SHORT).show();
     }
-
-//    txt1.equals("Admin") && txt2.equals("christmas")
-
-//    private void tryLogin(String txt1, String txt2){
-//        if(true){
-//            Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
-//
-//            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-//            fragmentTransaction.add(R.id.fragmentContainer, new ClientPageFragment()).commit();
-//        }
-//        else {
-//            Toast.makeText(getActivity(), "Incorrect credentials!", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 }
