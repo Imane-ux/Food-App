@@ -183,12 +183,14 @@ public class RegClientFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()) {
-                    //user  = new User(email,password,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);
+                    String id = mDatabase.push().getKey();
+                    user  = new User(email,password,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);
+                    mDatabase.child(id).setValue(user);
+
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
                     FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.fragmentContainer, new ClientPageFragment()).commit();
 
-                    return;
 
                 }else {
                     Toast.makeText(getActivity(), "Registration unsuccessful", Toast.LENGTH_SHORT).show();
