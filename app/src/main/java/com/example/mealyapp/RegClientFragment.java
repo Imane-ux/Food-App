@@ -1,54 +1,202 @@
 package com.example.mealyapp;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 
-
+import android.text.TextUtils;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
+import android.widget.Button;
+import android.widget.EditText;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class RegClientFragment extends Fragment {
+    FirebaseAuth mAuth;
+    Button inRegister, backToLogin;
+    EditText inPassword;
+    TextInputEditText inEmail,inFirstName,inLastName,inAddress,inCardNumber,inExpiryYear,inExpiryMonth,inSecurityCode,inNameOnCard;
+    String password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode,nameOnCard;
+    FirebaseDatabase database;
+    DatabaseReference mDatabase;
+    private static final String USER = "user";
+    private static final String TAG = "RegClientFragment";
+    User user;
 
-    private FirebaseAuth mAuth;
-
+   @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
+
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_reg_client, container, false);
-        mAuth = FirebaseAuth.getInstance();
 
-        //put your code here. "onclick listener dor the reg btn/ get the inputs as texts, check if they are empty and make
+       View view =inflater.inflate(R.layout.fragment_reg_client, container, false);
+       inPassword = view.findViewById(R.id.inPassword);
+       inEmail = view.findViewById(R.id.inEmail);
+       inFirstName = view.findViewById(R.id.inFirstName);
+       inLastName = view.findViewById(R.id.inLastName);
+       inAddress = view.findViewById(R.id.inAddress);
+       inCardNumber = view.findViewById(R.id.inCardNumber);
+       inExpiryYear = view.findViewById(R.id.inExpiryYear);
+       inExpiryMonth = view.findViewById(R.id.inExpiryMonth);
+       inSecurityCode = view.findViewById(R.id.inSecurityCode);
+       inNameOnCard = view.findViewById(R.id.inNameOnCard);
+       inRegister = view.findViewById(R.id.inRegister);
+
+       mAuth = FirebaseAuth.getInstance();
+       database = FirebaseDatabase.getInstance();
+       mDatabase = FirebaseDatabase.getInstance().getReference(USER);
+
+       inRegister= (Button) view.findViewById(R.id.inRegister);
+       backToLogin= (Button) view.findViewById(R.id.backToLogin);
+       backToLogin.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+               fragmentTransaction.replace(R.id.fragmentContainer, new StartFragment()).commit();
+
+           }
+       });
+
+
+       inRegister.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+              password = inPassword.getText().toString();
+              email = inEmail.getText().toString();
+              firstName = inFirstName.getText().toString();
+              lastName = inLastName.getText().toString();
+              address = inAddress.getText().toString();
+               cardNumber = inCardNumber.getText().toString();
+               expiryYear = inExpiryYear.getText().toString();
+               expiryMonth = inExpiryMonth.getText().toString();
+               securityCode = inSecurityCode.getText().toString();
+               nameOnCard = inNameOnCard.getText().toString();
+
+               if (TextUtils.isEmpty(firstName)){
+                   inFirstName.setError("Enter first name!");
+                   inRegister.setClickable(false);
+                   return;
+
+               }
+               if (TextUtils.isEmpty(lastName)){
+                   inLastName.setError("Enter last name!");
+                   inRegister.setClickable(false);
+                   return;
+
+               }
+               if (TextUtils.isEmpty(address)){
+                   inAddress.setError("Enter address!");
+                   inRegister.setClickable(false);
+                   return;
+
+               }
+               if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                   inEmail.setError("Enter valid email!");
+                   inRegister.setClickable(false);
+                   return;
+
+               }
+               if (TextUtils.isEmpty(cardNumber)){
+                   inCardNumber.setError("Enter card number!");
+                   inRegister.setClickable(false);
+                   return;
+
+               }
+               if (TextUtils.isEmpty(password)||password.length()<5){
+                   inPassword.setError("Password can not be less than 5 characters!");
+                   inRegister.setClickable(false);
+                   return;
+
+               }
+               if (TextUtils.isEmpty(expiryMonth)){
+                   inExpiryMonth.setError("Enter expiry month!");
+                   inRegister.setClickable(false);
+                   return;
+
+               }
+               if (TextUtils.isEmpty(expiryYear)){
+                   inExpiryYear.setError("Enter expiry year!");
+                   inRegister.setClickable(false);
+                   return;
+
+               }
+               if (TextUtils.isEmpty(securityCode)){
+                   inSecurityCode.setError("Enter security code!");
+                   inRegister.setClickable(false);
+                   return;
+
+               }
+               if (TextUtils.isEmpty(nameOnCard)){
+                   inNameOnCard.setError("Enter card name!");
+                   inRegister.setClickable(false);
+                   return;
+
+               }else{
+
+                   inRegister.setClickable(true);
+                   registerUser(email, password);
+               }
+
+              // mAuth = FirebaseAuth.getInstance();
+
+
+
+           }
+
+
+       });
+       return view;
+        //mAuth = FirebaseAuth.getInstance();
+
+       //put your code here. "onclick listener for the reg btn/ get the inputs as texts, check if they are empty and make
         //a toast msg to the user. set a password length to surpass 5 characters for exp... if all good register him using
         // the method below.
 
-        return view;
+
+
 
     }
-
-    private void registerUser(String txt1, String txt2) {
-        mAuth.createUserWithEmailAndPassword(txt1,txt2).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+    public void registerUser(String email, String password){
+        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(getActivity(), "You've registered!", Toast.LENGTH_SHORT).show();
-                    // code to start a new fragment here
-                }else{
-                    Toast.makeText(getActivity(), "Registration failed.", Toast.LENGTH_SHORT).show();
-                }}
+                if (task.isComplete()) {
+                    //user  = new User(email,password,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);
+                    Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
+                    FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainer, new ClientPageFragment()).commit();
+
+                    return;
+
+                }else {
+                    Toast.makeText(getActivity(), "Registration unsuccessful", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
+
     }
+
+
 }
