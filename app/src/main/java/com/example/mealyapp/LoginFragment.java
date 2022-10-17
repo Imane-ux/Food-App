@@ -36,6 +36,7 @@ public class LoginFragment extends Fragment {
         Button loginButton = (Button) view.findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
+<<<<<<< HEAD
            @Override
            public void onClick(View v) {
                if(emailInput.getText().toString().equals("Admin") && passwordInput.getText().toString().equals("group28")){
@@ -47,6 +48,19 @@ public class LoginFragment extends Fragment {
                    loginUser(emailInput.getText().toString(), passwordInput.getText().toString());
                }
            }
+=======
+            @Override
+            public void onClick(View v) {
+                if(emailInput.getText().toString().equals("Admin") && passwordInput.getText().toString().equals("group28")){
+                    Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
+                    FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainer, new AdminFragment()).commit();
+                }
+                else {
+                    loginUser(emailInput.getText().toString(), passwordInput.getText().toString());
+                }
+            }
+>>>>>>> 7c1d8b5ea3622482ab48a6a0987f753370e123ea
         });
 
 
