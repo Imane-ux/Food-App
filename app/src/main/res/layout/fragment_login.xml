@@ -42,6 +42,15 @@
             android:password="true"
             android:singleLine="true" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/invalid_text"
+            android:text="Invalid email or password"
+            android:textColor="#780000"
+            android:textAlignment="center"
+            android:visibility="invisible" />
+
 
         <androidx.appcompat.widget.AppCompatButton
             style="@style/Widget.AppCompat.Button.Colored"
