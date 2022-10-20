@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFC107"
+    android:backgroundTint="#FF9800"
+    tools:context=".RegClientFragment">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="303dp" />
+
+    <TextView
+        android:id="@+id/registerCheque"
+        android:layout_width="275dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="71dp"
+        android:text="Register a Cheque"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/explanationTextCheque"
+        android:layout_width="271dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="113dp"
+        android:text="It is necessary to upload an image of a cheque for us to pay our registered cooks."
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/back"
+        android:layout_width="119dp"
+        android:layout_height="31dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="646dp"
+        android:layout_marginEnd="254dp"
+        android:background="@drawable/border_radius"
+        android:text="Back"
+        android:textColor="#8a5303"
+        android:textSize="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/registerCook"
+        android:layout_width="119dp"
+        android:layout_height="31dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="647dp"
+        android:layout_marginEnd="31dp"
+        android:background="@drawable/border_radius"
+        android:text="REGISTER"
+        android:textColor="#8a5303"
+        android:textSize="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/uploadCheque"
+        android:layout_width="119dp"
+        android:layout_height="31dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="307dp"
+        android:layout_marginEnd="247dp"
+        android:background="@drawable/border_radius"
+        android:text="TAKE PHOTO"
+        android:textColor="#8a5303"
+        android:textSize="10dp" />
+
+    <!--ImageView to preview the selected image-->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="376dp"
+        android:layout_height="237dp"
+        android:layout_below="@id/uploadCheque"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <ImageView
+        android:id="@+id/blankCheque"
+        android:layout_width="277dp"
+        android:layout_height="131dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="159dp"
+        android:src="@drawable/blankcheque"
+        app:srcCompat="@drawable/blankcheque"
+        tools:srcCompat="@drawable/blankcheque" />
+
+
+</RelativeLayout>

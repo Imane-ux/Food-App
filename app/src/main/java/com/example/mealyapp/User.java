@@ -2,6 +2,7 @@ package com.example.mealyapp;
 
 public class User {
     public String password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode,nameOnCard;
+    public String passwordCook, firstNameCook, lastNameCook, emailCook, pickupAddress, postalCode, description;
 
     public User(String password, String email, String firstName, String lastName, String address, String cardNumber, String expiryYear, String expiryMonth, String securityCode, String nameOnCard) {
         this.password = password;
@@ -15,9 +16,15 @@ public class User {
         this.securityCode = securityCode;
         this.nameOnCard = nameOnCard;
     }
+    public User(String emailCook, String passwordCook, String firstNameCook,String lastNameCook, String pickupAddress, String postalCode, String description) {
+        this.emailCook = emailCook;
+        this.passwordCook = passwordCook;
+        this.firstNameCook = firstNameCook;
+        this.lastNameCook = lastNameCook;
+        this.pickupAddress = pickupAddress;
+        this.postalCode = postalCode;
+        this.description = description;
 
-    public User(String password, String email) {
-        this.password = password;
-        this.email = email;
+
     }
 }

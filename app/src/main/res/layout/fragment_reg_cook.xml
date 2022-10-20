@@ -1,16 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFC107"
     android:backgroundTint="#FF9800"
-    tools:context=".RegCookFragment">
+    tools:context=".RegClientFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inDescription"
+        android:layout_width="342dp"
+        android:layout_height="89dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="525dp"
+        android:background="@drawable/borders"
+        android:hint="Tell us about yourself..."
+        android:paddingLeft="10dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/inPasswordCook"
+        android:layout_width="339dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="239dp"
+        android:background="@drawable/borders"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp"
+        android:singleLine="true" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inEmailCook"
+        android:layout_width="339dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="175dp"
+        android:background="@drawable/borders"
+        android:hint="Email"
+        android:paddingLeft="10dp"
+        android:singleLine="true" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inFirstNameCook"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="216dp"
+        android:background="@drawable/borders"
+        android:hint="First Name"
+        android:paddingLeft="10dp"
+        android:singleLine="true" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inLastNameCook"
+        android:layout_width="162dp"
+        android:layout_height="46dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="209dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/borders"
+        android:hint="Last Name"
+        android:paddingLeft="10dp"
+        android:singleLine="true" />
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="303dp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/pickupAddress"
+        android:layout_width="275dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="315dp"
+        android:text="Pickup Address"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/cookDescription"
+        android:layout_width="275dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="488dp"
+        android:text="Cook Description"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inPostalCode"
+        android:layout_width="339dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="410dp"
+        android:background="@drawable/borders"
+        android:hint="Postal Code"
+        android:paddingLeft="10dp"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/registerCheque"
+        android:layout_width="275dp"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="71dp"
+        android:text="Register as a Cook"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/back"
+        android:layout_width="119dp"
+        android:layout_height="31dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="645dp"
+        android:layout_marginEnd="253dp"
+        android:background="@drawable/border_radius"
+        android:text="Back"
+        android:textColor="#8a5303"
+        android:textSize="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/next"
+        android:layout_width="119dp"
+        android:layout_height="31dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="647dp"
+        android:layout_marginEnd="31dp"
+        android:background="@drawable/border_radius"
+        android:text="NEXT"
+        android:textColor="#8a5303"
+        android:textSize="10dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inPickupAddress"
+        android:layout_width="339dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="349dp"
+        android:background="@drawable/borders"
+        android:hint="Address"
+        android:paddingLeft="10dp"
+        android:singleLine="true" />
+
+</RelativeLayout>
