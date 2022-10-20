@@ -1,20 +1,15 @@
 package com.example.mealyapp;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +24,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.auth.FirebaseUser;
 
 
 public class RegClientFragment extends Fragment {
@@ -42,7 +36,7 @@ public class RegClientFragment extends Fragment {
     DatabaseReference mDatabase;
     private static final String USER = "client";
     private static final String TAG = "RegClientFragment";
-    Client client;
+    User client;
 
    @SuppressLint("MissingInflatedId")
     @Nullable
@@ -184,7 +178,7 @@ public class RegClientFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()) {
                     String id = mDatabase.push().getKey();
-                     client  = new Client(password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);
+                     client  = new User("Client",password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);
                     mDatabase.child(id).setValue(client);
 
                     if(  mAuth.getInstance().getCurrentUser() != null){
@@ -193,7 +187,7 @@ public class RegClientFragment extends Fragment {
 
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
                     FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentContainer, new ClientPageFragment()).commit();
+                    fragmentTransaction.replace(R.id.fragmentContainer, new WelcomePageFragment()).commit();
 
 
                 }else {

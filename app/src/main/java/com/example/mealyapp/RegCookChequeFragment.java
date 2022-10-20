@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -17,13 +16,8 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,7 +27,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -136,13 +129,13 @@ public class RegCookChequeFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()) {
                     String id = mDatabase.push().getKey();
-                    Client client;
-                    client  = new Client(emailCook,passwordCook,firstNameCook,lastNameCook,pickupAddress,postalCode,description);
-                    mDatabase.child(id).setValue(client);
+                    User cook;
+                    cook  = new User("Cook", emailCook,passwordCook,firstNameCook,lastNameCook,pickupAddress,postalCode,description);
+                    mDatabase.child(id).setValue(cook);
 
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
                     FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentContainer, new ClientPageFragment()).commit();
+                    fragmentTransaction.replace(R.id.fragmentContainer, new WelcomePageFragment()).commit();
 
                 }else {
                     Toast.makeText(getActivity(), "Registration unsuccessful", Toast.LENGTH_SHORT).show();

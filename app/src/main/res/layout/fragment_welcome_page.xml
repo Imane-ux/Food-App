@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFC107"
     android:backgroundTint="#FF9800"
-    tools:context=".ClientPageFragment">
+    tools:context=".WelcomePageFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,9 +27,11 @@
             app:layout_constraintVertical_bias="0.94" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="252dp"
-            android:layout_height="238dp"
+            android:id="@+id/textView0"
+            android:layout_width="385dp"
+            android:layout_height="215dp"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
             android:text="@string/welcome"
             android:textSize="48sp"
             app:layout_constraintBottom_toBottomOf="parent"
