@@ -16,7 +16,7 @@ public class Client {
         this.securityCode = securityCode;
         this.nameOnCard = nameOnCard;
     }
-    public User(String emailCook, String passwordCook, String firstNameCook,String lastNameCook, String pickupAddress, String postalCode, String description) {
+    public Client(String emailCook, String passwordCook, String firstNameCook,String lastNameCook, String pickupAddress, String postalCode, String description) {
         this.emailCook = emailCook;
         this.passwordCook = passwordCook;
         this.firstNameCook = firstNameCook;
