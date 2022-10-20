@@ -40,9 +40,9 @@ public class RegClientFragment extends Fragment {
     String password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode,nameOnCard;
     FirebaseDatabase database;
     DatabaseReference mDatabase;
-    private static final String USER = "user";
+    private static final String USER = "client";
     private static final String TAG = "RegClientFragment";
-    User user;
+    Client client;
 
    @SuppressLint("MissingInflatedId")
     @Nullable
@@ -97,61 +97,61 @@ public class RegClientFragment extends Fragment {
                if (TextUtils.isEmpty(firstName)){
                    inFirstName.setError("Enter first name!");
                    inRegister.setClickable(false);
-                   return;
+
 
                }
                if (TextUtils.isEmpty(lastName)){
                    inLastName.setError("Enter last name!");
                    inRegister.setClickable(false);
-                   return;
+
 
                }
                if (TextUtils.isEmpty(address)){
                    inAddress.setError("Enter address!");
                    inRegister.setClickable(false);
-                   return;
+
 
                }
                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                    inEmail.setError("Enter valid email!");
                    inRegister.setClickable(false);
-                   return;
+
 
                }
                if (TextUtils.isEmpty(cardNumber)){
                    inCardNumber.setError("Enter card number!");
                    inRegister.setClickable(false);
-                   return;
+
 
                }
                if (TextUtils.isEmpty(password)||password.length()<5){
                    inPassword.setError("Password can not be less than 5 characters!");
                    inRegister.setClickable(false);
-                   return;
+
 
                }
                if (TextUtils.isEmpty(expiryMonth)){
                    inExpiryMonth.setError("Enter expiry month!");
                    inRegister.setClickable(false);
-                   return;
+
 
                }
                if (TextUtils.isEmpty(expiryYear)){
                    inExpiryYear.setError("Enter expiry year!");
                    inRegister.setClickable(false);
-                   return;
+
 
                }
                if (TextUtils.isEmpty(securityCode)){
                    inSecurityCode.setError("Enter security code!");
                    inRegister.setClickable(false);
-                   return;
+
 
                }
                if (TextUtils.isEmpty(nameOnCard)){
                    inNameOnCard.setError("Enter card name!");
                    inRegister.setClickable(false);
-                   return;
+
 
                }else{
 
@@ -184,8 +184,12 @@ public class RegClientFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()) {
                     String id = mDatabase.push().getKey();
-                    user  = new User(email,password,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);
-                    mDatabase.child(id).setValue(user);
+                     client  = new Client(password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);
+                    mDatabase.child(id).setValue(client);
+
+                    if(  mAuth.getInstance().getCurrentUser() != null){
+                        String userID = mAuth.getInstance().getCurrentUser().getUid();
+                    }
 
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
                     FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
