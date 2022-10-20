@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,6 +36,7 @@ public class LoginFragment extends Fragment {
         EditText emailInput = (EditText) view.findViewById(R.id.email_input);
         EditText passwordInput = (EditText) view.findViewById(R.id.password_input);
         Button loginButton = (Button) view.findViewById(R.id.login_button);
+        TextView invalidText = (TextView) view.findViewById(R.id.invalid_text);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -46,11 +48,11 @@ public class LoginFragment extends Fragment {
                        fragmentTransaction.replace(R.id.fragmentContainer, new AdminFragment()).commit();
                    }
                    else {
-                       loginUser(emailInput.getText().toString(), passwordInput.getText().toString());
+                       loginUser(emailInput.getText().toString(), passwordInput.getText().toString(), view);
                    }
                }
                catch (Exception e){
-                   Toast.makeText(getActivity(), "Incorrect credentials!", Toast.LENGTH_SHORT).show();
+                    invalidText.setVisibility(View.VISIBLE);
                }
 
            }
@@ -63,7 +65,7 @@ public class LoginFragment extends Fragment {
 
     }
 
-    private void loginUser(String txt1, String txt2) {
+    private void loginUser(String txt1, String txt2, View view) {
         mAuth.signInWithEmailAndPassword(txt1, txt2).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
@@ -75,6 +77,10 @@ public class LoginFragment extends Fragment {
                 // check if u need to remove the fragment b4 passing to the next.(prolly yes)
 
             }
+
         });
+
+        TextView invalidText = (TextView) view.findViewById(R.id.invalid_text);
+        invalidText.setVisibility(View.VISIBLE);
     }
 }
