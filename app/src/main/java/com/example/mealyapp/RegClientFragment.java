@@ -34,9 +34,9 @@ public class RegClientFragment extends Fragment {
     String password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode,nameOnCard;
     FirebaseDatabase database;
     DatabaseReference mDatabase;
-    private static final String USER = "client";
+    private static final String USER = "user";
     private static final String TAG = "RegClientFragment";
-    User client;
+    User user;
 
    @SuppressLint("MissingInflatedId")
     @Nullable
@@ -177,13 +177,15 @@ public class RegClientFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()) {
-                    String id = mDatabase.push().getKey();
-                     client  = new User("Client",password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);
-                    mDatabase.child(id).setValue(client);
+                    //String id = mDatabase.push().getKey();
 
-                    if(  mAuth.getInstance().getCurrentUser() != null){
-                        String userID = mAuth.getInstance().getCurrentUser().getUid();
-                    }
+                    String userID = mAuth.getInstance().getCurrentUser().getUid();
+                    user  = new User("Client",password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);
+                    mDatabase.child(userID).setValue(user);
+
+                    //if(  mAuth.getInstance().getCurrentUser() != null){
+                      //  String userID = mAuth.getInstance().getCurrentUser().getUid();
+                    //}
 
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
                     FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();

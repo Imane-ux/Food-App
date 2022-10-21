@@ -30,7 +30,7 @@ public class WelcomePageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_welcome_page, container, false);
         mAuth = FirebaseAuth.getInstance();
-        TextView tV= (TextView) view.findViewById(R.id.textView0);
+        final TextView tV= (TextView) view.findViewById(R.id.textView0);
         if (mAuth.isSignInWithEmailLink("Admin")){
             String a= getString(R.string.wel_admin);
             tV.setText(a);
