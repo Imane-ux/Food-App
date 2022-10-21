@@ -40,8 +40,9 @@ public class LoginFragment extends Fragment {
                try {
                    if(emailInput.getText().toString().equals("Admin") && passwordInput.getText().toString().equals("group28")){
                        Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
+                       loginUser("Admin", "group28", view);
                        FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                       fragmentTransaction.replace(R.id.fragmentContainer, new AdminFragment()).commit();
+                       fragmentTransaction.replace(R.id.fragmentContainer, new WelcomePageFragment()).commit();
                    }
                    else {
                        loginUser(emailInput.getText().toString(), passwordInput.getText().toString(), view);
