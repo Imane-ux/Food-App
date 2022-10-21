@@ -31,7 +31,7 @@ public class WelcomePageFragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_welcome_page, container, false);
         mAuth = FirebaseAuth.getInstance();
         final TextView tV= (TextView) view.findViewById(R.id.textView0);
-        if (mAuth.isSignInWithEmailLink("Admin")){
+        if ((mAuth.getCurrentUser().getUid()).equals("40ylmmzjcSby42d0bMxG2ZO8EX12")){
             String a= getString(R.string.wel_admin);
             tV.setText(a);
         }else{
