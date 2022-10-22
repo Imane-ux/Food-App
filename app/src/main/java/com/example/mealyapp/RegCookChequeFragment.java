@@ -41,7 +41,7 @@ public class RegCookChequeFragment extends Fragment {
     FirebaseDatabase database;
     DatabaseReference mDatabase;
     private static final String USER = "user";
-//    private static final String TAG = "RegCookFragment";
+//
     Button back, registerCook;
     ActivityResultLauncher<Intent> activityResultLauncher;
 
@@ -130,7 +130,7 @@ public class RegCookChequeFragment extends Fragment {
                 if (task.isComplete()) {
                     //String id = mDatabase.push().getKey();
                     User cook;
-                    cook  = new User("Cook", emailCook,passwordCook,firstNameCook,lastNameCook,pickupAddress,postalCode,description);
+                    cook  = (User) new Cook("Cook",passwordCook,emailCook, firstNameCook,lastNameCook,pickupAddress,postalCode,description);
                     mDatabase.child(mAuth.getInstance().getCurrentUser().getUid()).setValue(cook);
 
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();

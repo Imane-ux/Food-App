@@ -180,7 +180,7 @@ public class RegClientFragment extends Fragment {
                     //String id = mDatabase.push().getKey();
 
                     String userID = mAuth.getInstance().getCurrentUser().getUid();
-                    user  = new User("Client",password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);
+                    user  = new Client("Client",password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);
                     mDatabase.child(userID).setValue(user);
 
                     //if(  mAuth.getInstance().getCurrentUser() != null){

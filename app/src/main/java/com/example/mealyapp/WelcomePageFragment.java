@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,9 @@ public class WelcomePageFragment extends Fragment {
             FirebaseDatabase.getInstance().getReference("user").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                     User userProfile = snapshot.getValue(User.class);
+                    Log.i("tag", userProfile.toString());
                     if (userProfile != null){
                         String role= userProfile.role;
                         if (role.equals("Cook")){
