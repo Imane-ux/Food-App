@@ -178,7 +178,7 @@ public class RegClientFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()) {
-                    //String id = mDatabase.push().getKey();
+                   // String id = mDatabase.push().getKey();
 
                     String userID = mAuth.getInstance().getCurrentUser().getUid();
                     user  = new Client("Client",password,email,firstName,lastName,address,cardNumber,expiryYear,expiryMonth,securityCode, nameOnCard);

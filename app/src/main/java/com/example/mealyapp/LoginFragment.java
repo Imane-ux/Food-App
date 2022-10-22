@@ -2,6 +2,7 @@ package com.example.mealyapp;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -15,7 +16,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -38,7 +41,14 @@ public class LoginFragment extends Fragment {
            @Override
            public void onClick(View v) {
                try {
-                    loginUser(emailInput.getText().toString(), passwordInput.getText().toString(), view);
+                   /**if(emailInput.getText().toString().equals("Admin@admin.ca") && passwordInput.getText().toString().equals("group28")){
+                       Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
+                       loginUser("Admin@admin.ca", "group28", view);
+                       FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                       fragmentTransaction.replace(R.id.fragmentContainer, new WelcomePageFragment()).commit();
+                   }
+                   else {*/
+                       loginUser(emailInput.getText().toString(), passwordInput.getText().toString());
                    //}
                }
                catch (Exception e){
@@ -49,27 +59,29 @@ public class LoginFragment extends Fragment {
         });
 
 
+        //put your code here for name, email, address... Use the login user method below once u get the strings.
 
         return view;
 
     }
 
-    private void loginUser(String txt1, String txt2, View view) {
-        mAuth.signInWithEmailAndPassword(txt1, txt2).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+    private void loginUser(String txt1, String txt2) {
+        mAuth.signInWithEmailAndPassword(txt1,txt2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onSuccess(AuthResult authResult) {
-                Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    // String id = mDatabase.push().getKey();
 
-                FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, new WelcomeClientFragment()).commit();
-                // code to start a new fragment here (welcome Client fragment)
+                    Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
+                    FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainer, new WelcomeClientFragment()).commit();
 
 
+                }else {
+                    Toast.makeText(getActivity(), "Login unsuccessful", Toast.LENGTH_SHORT).show();
+                }
             }
-
         });
 
-        //TextView invalidText = (TextView) view.findViewById(R.id.invalid_text);
-        //invalidText.setVisibility(View.VISIBLE);
     }
 }
