@@ -38,14 +38,7 @@ public class LoginFragment extends Fragment {
            @Override
            public void onClick(View v) {
                try {
-                   /**if(emailInput.getText().toString().equals("Admin@admin.ca") && passwordInput.getText().toString().equals("group28")){
-                       Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
-                       loginUser("Admin@admin.ca", "group28", view);
-                       FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                       fragmentTransaction.replace(R.id.fragmentContainer, new WelcomePageFragment()).commit();
-                   }
-                   else {*/
-                       loginUser(emailInput.getText().toString(), passwordInput.getText().toString(), view);
+                    loginUser(emailInput.getText().toString(), passwordInput.getText().toString(), view);
                    //}
                }
                catch (Exception e){
@@ -56,7 +49,6 @@ public class LoginFragment extends Fragment {
         });
 
 
-        //put your code here for name, email, address... Use the login user method below once u get the strings.
 
         return view;
 
@@ -69,7 +61,7 @@ public class LoginFragment extends Fragment {
                 Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
 
                 FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, new WelcomePageFragment()).commit();
+                fragmentTransaction.replace(R.id.fragmentContainer, new WelcomeClientFragment()).commit();
                 // code to start a new fragment here (welcome Client fragment)
 
 
@@ -77,7 +69,7 @@ public class LoginFragment extends Fragment {
 
         });
 
-        TextView invalidText = (TextView) view.findViewById(R.id.invalid_text);
-        invalidText.setVisibility(View.VISIBLE);
+        //TextView invalidText = (TextView) view.findViewById(R.id.invalid_text);
+        //invalidText.setVisibility(View.VISIBLE);
     }
 }

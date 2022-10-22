@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,30 +22,29 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class WelcomePageFragment extends Fragment {
+public class WelcomeClientFragment extends Fragment {
     private FirebaseAuth mAuth;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_welcome_page, container, false);
+        View view =inflater.inflate(R.layout.fragment_welcome_client, container, false);
         mAuth = FirebaseAuth.getInstance();
-        final TextView tV= (TextView) view.findViewById(R.id.textView0);
+        final TextView tV= (TextView) view.findViewById(R.id.textView1);
         if ((mAuth.getCurrentUser().getUid()).equals("40ylmmzjcSby42d0bMxG2ZO8EX12")){
             String a= getString(R.string.wel_admin);
             tV.setText(a);
         }else{
-            FirebaseUser user = mAuth.getCurrentUser();
+            /*FirebaseUser user = mAuth.getCurrentUser();
             FirebaseDatabase.getInstance().getReference("user").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                     User userProfile = snapshot.getValue(User.class);
-                    Log.i("tag", userProfile.toString());
                     if (userProfile != null){
                         String role= userProfile.role;
                         if (role.equals("Cook")){
-                        tV.setText(getString(R.string.wel_cook));
+                            tV.setText(getString(R.string.wel_cook));
                         }else if (role.equals( "Client")) {
                             tV.setText(getString(R.string.wel_client));
                         }
@@ -58,13 +56,14 @@ public class WelcomePageFragment extends Fragment {
                 public void onCancelled(@NonNull DatabaseError error) {
 
                 }
-            });
+            });*/
+            tV.setText(getString(R.string.wel_client));
         }
 
 
 
-        Button logout= (Button) view.findViewById(R.id.logoutID);
-        logout.setOnClickListener(new View.OnClickListener() {
+        Button logout2= (Button) view.findViewById(R.id.logoutID2);
+        logout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();

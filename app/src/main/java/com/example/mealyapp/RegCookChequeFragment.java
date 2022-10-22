@@ -135,7 +135,7 @@ public class RegCookChequeFragment extends Fragment {
 
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
                     FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentContainer, new WelcomePageFragment()).commit();
+                    fragmentTransaction.replace(R.id.fragmentContainer, new WelcomeCookFragment()).commit();
 
                 }else {
                     Toast.makeText(getActivity(), "Registration unsuccessful", Toast.LENGTH_SHORT).show();

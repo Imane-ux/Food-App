@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFC107"
     android:backgroundTint="#FF9800"
-    tools:context=".WelcomePageFragment">
+    tools:context=".WelcomeCookFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +27,7 @@
             app:layout_constraintVertical_bias="0.94" />
 
         <TextView
-            android:id="@+id/textView0"
+            android:id="@+id/textView1"
             android:layout_width="385dp"
             android:layout_height="215dp"
             android:fontFamily="@font/aclonica"

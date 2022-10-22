@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegClientFragment extends Fragment {
+
     FirebaseAuth mAuth;
     Button inRegister, backToLogin;
     EditText inPassword;
@@ -189,7 +190,7 @@ public class RegClientFragment extends Fragment {
 
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
                     FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentContainer, new WelcomePageFragment()).commit();
+                    fragmentTransaction.replace(R.id.fragmentContainer, new WelcomeCookFragment()).commit();
 
 
                 }else {
