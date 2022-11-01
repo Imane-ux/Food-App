@@ -39,7 +39,7 @@ public class WelcomeClientFragment extends Fragment {
                 }
             };
 
-            timer.schedule(timerTask, 1000);
+            timer.schedule(timerTask, 1500);
 
         }else{
             tV.setText(getString(R.string.wel_client));
