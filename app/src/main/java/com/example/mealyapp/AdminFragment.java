@@ -31,15 +31,25 @@ public class AdminFragment extends Fragment {
         // Inflate the layout for this fragment
         View v =inflater.inflate(R.layout.fragment_admin, container, false);
 
-        recyclerView= v.findViewById(R.id.recyclerView1);
+        /*recyclerView= getActivity().findViewById(R.id.recyclerView1);
         ref= FirebaseDatabase.getInstance().getReference().child("Complaints");
         layoutManager= new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);*/
 
 
 
 
         return v;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        recyclerView= getActivity().findViewById(R.id.recyclerView1);
+        recyclerView.setHasFixedSize(true);
+        ref= FirebaseDatabase.getInstance().getReference().child("Complaints");
+        layoutManager= new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     @Override
