@@ -48,7 +48,7 @@ public class LoginFragment extends Fragment {
                        fragmentTransaction.replace(R.id.fragmentContainer, new WelcomePageFragment()).commit();
                    }
                    else {*/
-                       loginUser(emailInput.getText().toString(), passwordInput.getText().toString());
+                       loginUser(emailInput.getText().toString(), passwordInput.getText().toString(), view);
                    //}
                }
                catch (Exception e){
@@ -65,7 +65,7 @@ public class LoginFragment extends Fragment {
 
     }
 
-    private void loginUser(String txt1, String txt2) {
+    private void loginUser(String txt1, String txt2, View view) {
         mAuth.signInWithEmailAndPassword(txt1,txt2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -78,7 +78,8 @@ public class LoginFragment extends Fragment {
 
 
                 }else {
-                    Toast.makeText(getActivity(), "Login unsuccessful", Toast.LENGTH_SHORT).show();
+                    TextView invalidText = (TextView) view.findViewById(R.id.invalid_text);
+                    invalidText.setVisibility(View.VISIBLE);
                 }
             }
         });
