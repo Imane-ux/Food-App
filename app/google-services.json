@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "315901612721",
+    "firebase_url": "https://mealy-app-default-rtdb.firebaseio.com",
     "project_id": "mealy-app",
     "storage_bucket": "mealy-app.appspot.com"
   },
