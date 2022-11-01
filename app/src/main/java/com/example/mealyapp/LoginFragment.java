@@ -41,18 +41,10 @@ public class LoginFragment extends Fragment {
            @Override
            public void onClick(View v) {
                try {
-                   /**if(emailInput.getText().toString().equals("Admin@admin.ca") && passwordInput.getText().toString().equals("group28")){
-                       Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
-                       loginUser("Admin@admin.ca", "group28", view);
-                       FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                       fragmentTransaction.replace(R.id.fragmentContainer, new WelcomePageFragment()).commit();
-                   }
-                   else {*/
-                       loginUser(emailInput.getText().toString(), passwordInput.getText().toString(), view);
-                   //}
+                   loginUser(emailInput.getText().toString(), passwordInput.getText().toString(), view);
                }
                catch (Exception e){
-                    invalidText.setVisibility(View.VISIBLE);
+                   invalidText.setVisibility(View.VISIBLE);
                }
 
            }
