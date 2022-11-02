@@ -28,16 +28,6 @@ public class AdminFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =inflater.inflate(R.layout.fragment_admin, container, false);
-
-        /*recyclerView= getActivity().findViewById(R.id.recyclerView1);
-        ref= FirebaseDatabase.getInstance().getReference().child("Complaints");
-        recyclerView.setHasFixedSize(true);
-        layoutManager= new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);*/
-
-
-
-
         return v;
     }
 
@@ -51,15 +41,6 @@ public class AdminFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
     }
-    /*@Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        recyclerView= getActivity().findViewById(R.id.recyclerView1);
-        recyclerView.setHasFixedSize(true);
-        ref= FirebaseDatabase.getInstance().getReference().child("Complaints");
-        layoutManager= new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-    }*/
 
     @Override
     public void onStart() {
