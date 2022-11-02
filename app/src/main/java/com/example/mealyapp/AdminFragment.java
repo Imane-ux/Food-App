@@ -90,8 +90,8 @@ public class AdminFragment extends Fragment {
         public boolean deleteComplaint(String id){
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Complaints").child(id);
         dR.removeValue();
-            Toast.makeText(getActivity(), "Complaint Actioned", Toast.LENGTH_LONG).show();
-            return true;
+        Toast.makeText(getActivity(), "Complaint Actioned", Toast.LENGTH_LONG).show();
+        return true;
         }
 
 
