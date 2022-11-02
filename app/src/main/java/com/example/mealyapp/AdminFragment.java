@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,8 +61,29 @@ public class AdminFragment extends Fragment {
         FirebaseRecyclerAdapter<Complaint, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Complaint, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Complaint model) {
+                final String complainerID = getRef(position).getKey();
                 holder.itemName.setText(model.getCookUID());
                 holder.itemComplaint.setText(model.getComplaint());
+                holder.itemDismiss.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getActivity(), "Dismiss Function not yet implemented", Toast.LENGTH_LONG).show();
+                        // u would wanna use the complainerID ref above to dismiss the complaint
+                        deleteComplaint(complainerID);
+                    }
+                });
+                holder.itemBan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getActivity(), "Ban Function not yet implemented", Toast.LENGTH_LONG).show();
+                    }
+                });
+                holder.itemSuspend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getActivity(), "Suspend Function not yet implemented", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
             @NonNull
@@ -79,19 +101,25 @@ public class AdminFragment extends Fragment {
         public static class MyViewHolder extends RecyclerView.ViewHolder {
             TextView itemName;
             TextView itemComplaint;
-            //TextView ver;
+            Button itemBan;
+            Button itemSuspend;
+            Button itemDismiss;
+
+
             public MyViewHolder(View itemView) {
                 super(itemView);
-                //ver= itemView;
                 itemName= itemView.findViewById(R.id.ismCook);
                 itemComplaint= itemView.findViewById(R.id.ismComplaint);
+                itemBan =  itemView.findViewById(R.id.btn_susp_perm);
+                itemSuspend= itemView.findViewById(R.id.btn_susp_temp);
+                itemDismiss= itemView.findViewById(R.id.btn_dismiss);
             }
         }
         public boolean deleteComplaint(String id){
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Complaints").child(id);
-        dR.removeValue();
-        Toast.makeText(getActivity(), "Complaint Actioned", Toast.LENGTH_LONG).show();
-        return true;
+            DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Complaints").child(id);
+            dR.removeValue();
+            Toast.makeText(getActivity(), "Complaint Actioned", Toast.LENGTH_LONG).show();
+            return true;
         }
 
 
