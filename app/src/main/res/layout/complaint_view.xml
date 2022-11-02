@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="96dp"
+    android:layout_height="140dp"
     android:layout_marginTop="12dp"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
@@ -23,28 +23,82 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/ismCook"
-                android:layout_width="181dp"
+
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="68dp" />
+                android:layout_marginEnd="25dp"
+                android:fontFamily="monospace"
+                android:includeFontPadding="false"
+                android:text="Cook's UID:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ismCook"
+                android:layout_width="205dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="70dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="110dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:text="Complaint:"
+                android:fontFamily="monospace"
+                android:includeFontPadding="false"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/ismComplaint"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginStart="16dp"
+                android:layout_width="205dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="1dp"
                 android:layout_marginTop="44dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:gravity="top" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_dismiss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="74dp"
+                android:layout_weight="1"
+                android:backgroundTint="#0E0E0E"
+                android:text="Dismiss" />
+
+
+            <Button
+                android:id="@+id/btn_suspend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="74dp"
+                android:layout_weight="1"
+                android:backgroundTint="#0E0E0E"
+                android:text="Suspend" />
         </LinearLayout>
 
     </RelativeLayout>

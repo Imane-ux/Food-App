@@ -3,6 +3,9 @@ package com.example.mealyapp;
 public class Complaint {
     private String cookUID, complaint;
 
+    public Complaint() {
+
+    }
     public Complaint(String cookUID, String complaint) {
         this.cookUID = cookUID;
         this.complaint = complaint;

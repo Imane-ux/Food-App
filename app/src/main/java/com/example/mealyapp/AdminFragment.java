@@ -31,6 +31,7 @@ public class AdminFragment extends Fragment {
 
         /*recyclerView= getActivity().findViewById(R.id.recyclerView1);
         ref= FirebaseDatabase.getInstance().getReference().child("Complaints");
+        recyclerView.setHasFixedSize(true);
         layoutManager= new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);*/
 
@@ -41,6 +42,16 @@ public class AdminFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        recyclerView= view.findViewById(R.id.recyclerView1);
+        ref= FirebaseDatabase.getInstance().getReference().child("Complaints");
+        recyclerView.setHasFixedSize(true);
+        layoutManager= new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+    }
+    /*@Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         recyclerView= getActivity().findViewById(R.id.recyclerView1);
@@ -48,7 +59,7 @@ public class AdminFragment extends Fragment {
         ref= FirebaseDatabase.getInstance().getReference().child("Complaints");
         layoutManager= new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-    }
+    }*/
 
     @Override
     public void onStart() {
