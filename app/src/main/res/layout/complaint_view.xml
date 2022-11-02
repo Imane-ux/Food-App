@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
+    android:layout_height="170dp"
     android:layout_marginTop="12dp"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
@@ -78,27 +78,41 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
+
 
             <Button
                 android:id="@+id/btn_dismiss"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="74dp"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="82dp"
+                android:layout_marginRight="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#0E0E0E"
-                android:text="Dismiss" />
-
+                android:text="Dismiss"
+                android:textSize="12sp"/>
 
             <Button
-                android:id="@+id/btn_suspend"
+                android:id="@+id/btn_susp_temp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="74dp"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="#0E0E0E"
+                android:text="Suspend temporarily"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_susp_perm"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginTop="74dp"
                 android:layout_weight="1"
                 android:backgroundTint="#0E0E0E"
-                android:text="Suspend" />
+                android:text="Suspend permanently"
+                android:textSize="12sp"/>
         </LinearLayout>
 
     </RelativeLayout>
