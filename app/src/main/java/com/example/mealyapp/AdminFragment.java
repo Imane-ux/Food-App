@@ -19,6 +19,9 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class AdminFragment extends Fragment {
     private RecyclerView recyclerView;
@@ -61,9 +64,11 @@ public class AdminFragment extends Fragment {
         FirebaseRecyclerAdapter<Complaint, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Complaint, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Complaint model) {
+
                 final String complainerID = getRef(position).getKey();
                 holder.itemName.setText(model.getCookUID());
                 holder.itemComplaint.setText(model.getComplaint());
+
                 holder.itemDismiss.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -75,13 +80,13 @@ public class AdminFragment extends Fragment {
                 holder.itemBan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getActivity(), "Ban Function not yet implemented", Toast.LENGTH_LONG).show();
+                        suspendCookParmanently(complainerID);
                     }
                 });
                 holder.itemSuspend.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getActivity(), "Suspend Function not yet implemented", Toast.LENGTH_LONG).show();
+                        suspendCookTemporarily(complainerID);
                     }
                 });
             }
@@ -115,10 +120,31 @@ public class AdminFragment extends Fragment {
                 itemDismiss= itemView.findViewById(R.id.btn_dismiss);
             }
         }
+
+
+
         public boolean deleteComplaint(String id){
             DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Complaints").child(id);
             dR.removeValue();
             Toast.makeText(getActivity(), "Complaint Actioned", Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        public boolean suspendCookTemporarily(String id){
+            DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Complaints").child(id);
+            Map<String, Object> temporaryBanUpdate = new HashMap<>();
+            temporaryBanUpdate.put("temporaryBan", 15);
+            dR.updateChildren(temporaryBanUpdate);
+            Toast.makeText(getActivity(), "Temporary Suspension Actioned", Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        public boolean suspendCookParmanently(String id){
+            DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Complaints").child(id);
+            Map<String, Object> temporaryBanUpdate = new HashMap<>();
+            temporaryBanUpdate.put("permanentBan", true);
+            dR.updateChildren(temporaryBanUpdate);
+            Toast.makeText(getActivity(), "Permanent Suspension Actioned", Toast.LENGTH_LONG).show();
             return true;
         }
 
