@@ -27,10 +27,13 @@ public class WelcomeCookFragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_welcome_cook, container, false);
         mAuth = FirebaseAuth.getInstance();
         final TextView tV= (TextView) view.findViewById(R.id.textView1);
+
+        // Check if it's the administrator trying to login
         if ((mAuth.getCurrentUser().getUid()).equals("40ylmmzjcSby42d0bMxG2ZO8EX12")){
             String a= getString(R.string.wel_admin);
             tV.setText(a);
 
+            // Set a timer to open the home page of an administrator a few seconds after the welcome page.
             Timer timer = new Timer();
             TimerTask timerTask = new TimerTask() {
                 @Override
