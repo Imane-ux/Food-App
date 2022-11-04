@@ -36,7 +36,7 @@ public class CookHomePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cook__home__page, container, false);
+        View view = inflater.inflate(R.layout.fragment_cook_home_page, container, false);
 
         mAuth = FirebaseAuth.getInstance();
         mainLayout = view.findViewById(R.id.main_layout);
