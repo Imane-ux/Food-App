@@ -88,6 +88,9 @@ public class AdminFragment extends Fragment {
                             ArrayList<String> listComplaints= new ArrayList<>();
                             listComplaints.add(complainerID);
                             Cook cook = new Cook(role, ps, em, fn, ln,ad,des,listComplaints);
+                            // crashed here b4.
+                            DatabaseReference re1 = FirebaseDatabase.getInstance().getReference().child("bannedCooks");
+                            re1.child(cookUId).setValue(cook);
 
 
                         }
