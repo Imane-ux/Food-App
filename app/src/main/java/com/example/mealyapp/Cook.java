@@ -18,6 +18,14 @@ public class Cook extends User {
         this.startOfBan = null;
     }
 
+    public Cook(String role, boolean permanentBan)
+    {
+        super(role);
+        this.permanentBan = permanentBan;
+    }
+
+    public boolean isPermanentlyBanned() { return permanentBan; }
+
     public ArrayList<String> getComplaints() {
         return complaints;
     }

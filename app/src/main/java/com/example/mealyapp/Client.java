@@ -11,4 +11,11 @@ public class Client extends User{
         this.securityCode = securityCode;
         this.nameOnCard = nameOnCard;
     }
+
+    public Client(String role)
+    {
+        super(role);
+    }
+
+    public String getRole() { return super.getRole(); }
 }

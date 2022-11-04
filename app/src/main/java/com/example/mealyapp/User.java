@@ -1,7 +1,8 @@
 package com.example.mealyapp;
 
 public class User {
-    public String role,password,email,firstName,lastName,address;
+    private String role,password,email,firstName,lastName,address;
+
     public User(String role, String password, String email, String firstName, String lastName, String address) {
         this.role= role;
         this.password = password;
@@ -12,7 +13,12 @@ public class User {
 
     }
 
+    public User(String role)
+    {
+        this.role = role;
+    }
 
+    public String getRole() { return this.role; }
 
 }
 

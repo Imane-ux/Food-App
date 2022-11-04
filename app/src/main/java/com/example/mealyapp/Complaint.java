@@ -8,6 +8,11 @@ public class Complaint {
     public Complaint() {
 
     }
+
+    public Complaint(String complaint){
+        this.complaint = complaint;
+    }
+
     public Complaint(String cookUID, String complaint, String startOfBan, int dayOfTemporaryBan, boolean permanentBan) {
         this.cookUID = cookUID;
         this.complaint = complaint;
