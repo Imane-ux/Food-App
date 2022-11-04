@@ -2,6 +2,7 @@ package com.example.mealyapp;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,9 +17,6 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-
-import android.content.Intent;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -32,12 +30,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 
 public class RegCookChequeFragment extends Fragment {
 
     private FirebaseAuth mAuth;
 
-    protected String passwordCook, firstNameCook, lastNameCook, emailCook, pickupAddress, postalCode, description;
+    protected String password, firstName, lastName, email, address, description;
     FirebaseDatabase database;
     DatabaseReference mDatabase;
     private static final String USER = "user";
@@ -60,12 +60,11 @@ public class RegCookChequeFragment extends Fragment {
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 //  passwordCook, firstNameCook, lastNameCook, emailCook, pickupAddress, postalCode, description;
 
-                emailCook = result.getString("df1");
-                passwordCook = result.getString("df2");
-                firstNameCook = result.getString("df3");
-                lastNameCook = result.getString("df4");
-                pickupAddress = result.getString("df5");
-                postalCode = result.getString("df6");
+                email = result.getString("df1");
+                password = result.getString("df2");
+                firstName = result.getString("df3");
+                lastName = result.getString("df4");
+                address = result.getString("df5");
                 description = result.getString("df7");
             }
         });
@@ -102,7 +101,7 @@ public class RegCookChequeFragment extends Fragment {
         registerCook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registerUser(emailCook, passwordCook);
+                registerUser(email, password);
             }
         });
 
@@ -123,14 +122,14 @@ public class RegCookChequeFragment extends Fragment {
         return view;
     }
 
-    public void registerUser(String emailCook, String passwordCook){
-        mAuth.createUserWithEmailAndPassword(emailCook,passwordCook).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    public void registerUser(String email, String password){
+        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()) {
                     //String id = mDatabase.push().getKey();
                     User cook;
-                    cook  = (User) new Cook("Cook",passwordCook,emailCook, firstNameCook,lastNameCook,pickupAddress,postalCode,description);
+                    cook = (User) new Cook("Cook",password,email, firstName,lastName,address,description, new ArrayList<>());
                     mDatabase.child(mAuth.getInstance().getCurrentUser().getUid()).setValue(cook);
 
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();

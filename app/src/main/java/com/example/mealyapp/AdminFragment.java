@@ -140,8 +140,8 @@ public class AdminFragment extends Fragment {
             String timestamp = ts.toString();
 
             Map<String, Object> temporaryBanUpdate = new HashMap<>();
-            temporaryBanUpdate.put("daysLeftTemporaryBan", 15);
-            temporaryBanUpdate.put("startOfBan", timestamp);
+            temporaryBanUpdate.put("daysOfTemporaryBan", 15);
+            temporaryBanUpdate.put("startOfBan", ts);
 
             dR.updateChildren(temporaryBanUpdate);
             Toast.makeText(getActivity(), "Temporary Suspension Actioned", Toast.LENGTH_LONG).show();

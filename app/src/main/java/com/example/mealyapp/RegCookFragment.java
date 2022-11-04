@@ -1,13 +1,6 @@
 package com.example.mealyapp;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -15,14 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 
 
 public class RegCookFragment extends Fragment {
@@ -31,8 +23,8 @@ public class RegCookFragment extends Fragment {
 
     Button back, next;
     EditText inPasswordCook;
-    TextInputEditText inFirstNameCook, inLastNameCook, inEmailCook, inPickupAddress, inPostalCode, inDescription;
-    String passwordCook, firstNameCook, lastNameCook, emailCook, pickupAddress, postalCode, description;
+    TextInputEditText inFirstNameCook, inLastNameCook, inEmailCook, inPickupAddress, inDescription;
+    String passwordCook, firstNameCook, lastNameCook, emailCook, pickupAddress, description;
 
 
     @Nullable
@@ -57,7 +49,6 @@ public class RegCookFragment extends Fragment {
         inFirstNameCook = view.findViewById(R.id.inFirstNameCook);
         inLastNameCook = view.findViewById(R.id.inLastNameCook);
         inPickupAddress = view.findViewById(R.id.inPickupAddress);
-        inPostalCode = view.findViewById(R.id.inPostalCode);
         inDescription = view.findViewById(R.id.inDescription);
 
         next= (Button) view.findViewById(R.id.next);
@@ -70,7 +61,6 @@ public class RegCookFragment extends Fragment {
                 firstNameCook = inFirstNameCook.getText().toString();
                 lastNameCook = inLastNameCook.getText().toString();
                 pickupAddress = inPickupAddress.getText().toString();
-                postalCode = inPostalCode.getText().toString();
                 description = inDescription.getText().toString();
 
                 if (TextUtils.isEmpty(firstNameCook)){
@@ -86,9 +76,6 @@ public class RegCookFragment extends Fragment {
                 }  if (!Patterns.EMAIL_ADDRESS.matcher(emailCook).matches()){
                     inEmailCook.setError("Enter valid email!");
                     return;
-                } if (TextUtils.isEmpty(postalCode)){
-                    inPostalCode.setError("Enter card number!");
-                    return;
                 } if (TextUtils.isEmpty(passwordCook)||passwordCook.length()<5) {
                     inPasswordCook.setError("Password can not be less than 5 characters!");
                     return;
@@ -99,7 +86,6 @@ public class RegCookFragment extends Fragment {
                     result.putString("df3", firstNameCook);
                     result.putString("df4", lastNameCook);
                     result.putString("df5", pickupAddress);
-                    result.putString("df6", postalCode);
                     result.putString("df7", description);
                     getParentFragmentManager().setFragmentResult("datafrom1", result);
 
