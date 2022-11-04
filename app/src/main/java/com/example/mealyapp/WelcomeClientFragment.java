@@ -8,14 +8,21 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class WelcomeClientFragment extends Fragment {
     private FirebaseAuth mAuth;
@@ -45,8 +52,6 @@ public class WelcomeClientFragment extends Fragment {
             tV.setText(getString(R.string.wel_client));
         }
 
-
-
         Button logout2= (Button) view.findViewById(R.id.logoutID2);
         logout2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,5 +66,27 @@ public class WelcomeClientFragment extends Fragment {
 
         return view;
 
+    }
+
+    // Not in use yet... still testing.
+    public void decider()
+    {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
+        reference.child(mAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if(task.getResult().exists())
+                {
+                    DataSnapshot dataSnapshot = task.getResult();
+                    String role = String.valueOf(dataSnapshot.child("role").getValue());
+                    String password = String.valueOf(dataSnapshot.child("role").getValue());
+                    String email = String.valueOf(dataSnapshot.child("role").getValue());
+                    String firstName = String.valueOf(dataSnapshot.child("role").getValue());
+                    String lastName = String.valueOf(dataSnapshot.child("role").getValue());
+                    String address = String.valueOf(dataSnapshot.child("role").getValue());
+                    User user = new User(role, password, email, firstName, lastName, address);
+                }
+            }
+        });
     }
 }
