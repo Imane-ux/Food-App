@@ -41,9 +41,9 @@ public class AdminFragment extends Fragment {
         View v =inflater.inflate(R.layout.fragment_admin, container, false);
 
         /*recyclerView= getActivity().findViewById(R.id.recyclerView1);
-        recyclerView.setHasFixedSize(true);
+        //recyclerView.setHasFixedSize(true);
         ref= FirebaseDatabase.getInstance().getReference().child("Complaints");
-        layoutManager= new LinearLayoutManager(getActivity());
+        layoutManager= new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);*/
 
         return v;
@@ -72,28 +72,16 @@ public class AdminFragment extends Fragment {
                 final String complainerID = getRef(position).getKey();
                 String des= model.getComplaint();
                 String cookUId= model.getCookUID();
-                /*DatabaseReference re = FirebaseDatabase.getInstance().getReference().child("user").child(cookUId);
-                ref.addValueEventListener(new ValueEventListener() {
+                DatabaseReference re = FirebaseDatabase.getInstance().getReference().child("user").child(cookUId);
+                re.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //User value = snapshot.getValue(User.class);
-                        for (DataSnapshot ds: snapshot.getChildren()){
-                            User user= ds.getValue(User.class);
-                            String role= user.role;
-                            String fn= user.firstName;
-                            String ln= user.lastName;
-                            String ps= user.password;
-                            String em= user.email;
-                            String ad= user.address;
-                            ArrayList<String> listComplaints= new ArrayList<>();
-                            listComplaints.add(complainerID);
-                            Cook cook = new Cook(role, ps, em, fn, ln,ad,des,listComplaints);
-                            // crashed here b4.
-                            DatabaseReference re1 = FirebaseDatabase.getInstance().getReference().child("bannedCooks");
-                            re1.child(cookUId).setValue(cook);
 
-
-                        }
+                        ArrayList<String> listComplaints= new ArrayList<>();
+                        listComplaints.add(complainerID);
+                        Map<String, Object> listcomplaints = new HashMap<>();
+                        listcomplaints.put("List of complaints", listComplaints);
+                        re.updateChildren(listcomplaints);
 
                     }
 
@@ -101,7 +89,8 @@ public class AdminFragment extends Fragment {
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-                });*/
+                });
+
                 holder.itemName.setText(cookUId);
                 holder.itemComplaint.setText(model.getComplaint());
 
