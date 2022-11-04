@@ -16,10 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,12 +41,10 @@ public class AdminFragment extends Fragment {
         View v =inflater.inflate(R.layout.fragment_admin, container, false);
 
         /*recyclerView= getActivity().findViewById(R.id.recyclerView1);
+        recyclerView.setHasFixedSize(true);
         ref= FirebaseDatabase.getInstance().getReference().child("Complaints");
-        layoutManager= new LinearLayoutManager(getContext());
+        layoutManager= new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);*/
-
-
-
 
         return v;
     }
@@ -68,29 +70,60 @@ public class AdminFragment extends Fragment {
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Complaint model) {
 
                 final String complainerID = getRef(position).getKey();
-                holder.itemName.setText(model.getCookUID());
+                String des= model.getComplaint();
+                String cookUId= model.getCookUID();
+                /*DatabaseReference re = FirebaseDatabase.getInstance().getReference().child("user").child(cookUId);
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //User value = snapshot.getValue(User.class);
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            User user= ds.getValue(User.class);
+                            String role= user.role;
+                            String fn= user.firstName;
+                            String ln= user.lastName;
+                            String ps= user.password;
+                            String em= user.email;
+                            String ad= user.address;
+                            ArrayList<String> listComplaints= new ArrayList<>();
+                            listComplaints.add(complainerID);
+                            Cook cook = new Cook(role, ps, em, fn, ln,ad,des,listComplaints);
+                            // crashed here b4.
+                            DatabaseReference re1 = FirebaseDatabase.getInstance().getReference().child("bannedCooks");
+                            re1.child(cookUId).setValue(cook);
+
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });*/
+                holder.itemName.setText(cookUId);
                 holder.itemComplaint.setText(model.getComplaint());
 
                 holder.itemDismiss.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getActivity(), "Dismiss Function not yet implemented", Toast.LENGTH_LONG).show();
-                        // u would wanna use the complainerID ref above to dismiss the complaint
+                        Toast.makeText(getActivity(), "Dismissed", Toast.LENGTH_LONG).show();
                         deleteComplaint(complainerID);
                     }
-                });
+                    });
                 holder.itemBan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         suspendCookParmanently(complainerID);
                     }
-                });
+                    });
                 holder.itemSuspend.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         suspendCookTemporarily(complainerID);
                     }
-                });
+                    });
             }
 
             @NonNull

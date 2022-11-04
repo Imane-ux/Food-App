@@ -18,8 +18,7 @@ public class Cook extends User {
         this.startOfBan = null;
     }
 
-    public ArrayList<String> getComplaints()
-    {
+    public ArrayList<String> getComplaints() {
         return complaints;
     }
 }
