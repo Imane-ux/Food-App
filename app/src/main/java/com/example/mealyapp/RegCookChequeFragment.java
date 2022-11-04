@@ -128,8 +128,7 @@ public class RegCookChequeFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()) {
                     //String id = mDatabase.push().getKey();
-                    User cook;
-                    cook = (User) new Cook("Cook",password,email, firstName,lastName,address,description, new ArrayList<>());
+                    Cook cook = new Cook("Cook",password, email, firstName, lastName, address, description, new ArrayList<>());
                     mDatabase.child(mAuth.getInstance().getCurrentUser().getUid()).setValue(cook);
 
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();

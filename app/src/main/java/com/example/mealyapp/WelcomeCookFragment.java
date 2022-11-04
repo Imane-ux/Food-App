@@ -47,6 +47,17 @@ public class WelcomeCookFragment extends Fragment {
 
         }else{
             tV.setText(getString(R.string.wel_cook));
+
+            Timer timer = new Timer();
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainer, new CookHomePage()).commit();
+                }
+            };
+
+            timer.schedule(timerTask, 1500);
         }
 
 

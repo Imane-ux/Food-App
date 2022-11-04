@@ -49,6 +49,18 @@ public class WelcomeClientFragment extends Fragment {
             timer.schedule(timerTask, 1500);
 
         }else{
+
+            Timer timer = new Timer();
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainer, new CookHomePage()).commit();
+                }
+            };
+
+            timer.schedule(timerTask, 1500);
+
             tV.setText(getString(R.string.wel_client));
         }
 

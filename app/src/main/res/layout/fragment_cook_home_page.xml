@@ -5,14 +5,15 @@
     android:layout_height="match_parent"
     android:background="#FFC107"
     android:backgroundTint="#FF9800"
-    tools:context=".Cook_Home_Page">
+    tools:context=".CookHomePage">
 
-<!--    Created 2 layouts, one for the home page and another one for the ban message
-        Switch the using their visibility attributes.-->
+    <!--    Created 2 layouts, one for the home page and another one for the ban message
+            Switch the using their visibility attributes.-->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/main_layout"
         android:visibility="invisible">
 
     </RelativeLayout>
@@ -20,6 +21,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/banned_layout"
         android:visibility="visible">
 
         <TextView

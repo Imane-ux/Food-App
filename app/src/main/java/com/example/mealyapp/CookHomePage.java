@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -15,24 +17,66 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.*;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 
 
-public class Cook_Home_Page extends Fragment {
+public class CookHomePage extends Fragment {
 
     FirebaseAuth mAuth;
     Cook cook;
     ArrayList<Complaint> complaints;
+    int daysOfBanLeft = 0;
+    boolean permanentlyBanned = false;
+    RelativeLayout mainLayout, bannedLayout;
+    TextView bannedText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cook__home__page, container, false);
+        View view = inflater.inflate(R.layout.fragment_cook_home_page, container, false);
 
         mAuth = FirebaseAuth.getInstance();
+        mainLayout = view.findViewById(R.id.main_layout);
+        bannedLayout = view.findViewById(R.id.banned_layout);
+        bannedText = view.findViewById(R.id.banned_text);
 
         return view;
+    }
+
+    // Checking if the cook is banned.
+    public void checkBan()
+    {
+        if(!permanentlyBanned)
+        {
+            long maxDays = 0;
+
+            // Looking for a maximum number of days banned.
+            for (Complaint complaint: complaints)
+            {
+                long startTime = Timestamp.parse(complaint.getStartOfBan());
+                long currentTime = Timestamp.parse(new Timestamp(new Date().getTime()).toString());
+                long temp = currentTime - startTime;
+
+                if(temp > maxDays){ maxDays = temp; }
+            }
+
+            // Displayed the banned message if the cook is banned.
+            if(maxDays > 0)
+            {
+                bannedText.append(" for" + maxDays);
+                mainLayout.setVisibility(View.INVISIBLE);
+                bannedLayout.setVisibility(View.VISIBLE);
+            }
+        }
+        else
+        {
+            bannedText.append(" permanently!");
+            mainLayout.setVisibility(View.INVISIBLE);
+            bannedLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     // Retrieving all cook's attributes from firebase;
