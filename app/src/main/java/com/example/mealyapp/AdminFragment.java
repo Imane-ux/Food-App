@@ -19,6 +19,8 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -132,8 +134,15 @@ public class AdminFragment extends Fragment {
 
         public boolean suspendCookTemporarily(String id){
             DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Complaints").child(id);
+
+            Date date = new Date();
+            Timestamp ts = new Timestamp(date.getTime());
+            String timestamp = ts.toString();
+
             Map<String, Object> temporaryBanUpdate = new HashMap<>();
-            temporaryBanUpdate.put("temporaryBan", 15);
+            temporaryBanUpdate.put("daysLeftTemporaryBan", 15);
+            temporaryBanUpdate.put("startOfBan", timestamp);
+
             dR.updateChildren(temporaryBanUpdate);
             Toast.makeText(getActivity(), "Temporary Suspension Actioned", Toast.LENGTH_LONG).show();
             return true;
@@ -141,8 +150,14 @@ public class AdminFragment extends Fragment {
 
         public boolean suspendCookParmanently(String id){
             DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Complaints").child(id);
+
+            Date date = new Date();
+            Timestamp ts = new Timestamp(date.getTime());
+
             Map<String, Object> temporaryBanUpdate = new HashMap<>();
             temporaryBanUpdate.put("permanentBan", true);
+            temporaryBanUpdate.put("startOfBan", ts);
+
             dR.updateChildren(temporaryBanUpdate);
             Toast.makeText(getActivity(), "Permanent Suspension Actioned", Toast.LENGTH_LONG).show();
             return true;
