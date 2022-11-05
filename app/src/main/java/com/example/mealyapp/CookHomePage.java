@@ -173,13 +173,13 @@ public class CookHomePage extends Fragment {
     {
         if(!complaints.get(0).getPermanentBan())
         {
-            bannedText.append(" for" + complaints.get(0).getDaysOfTemporaryBan());
+            bannedText.append("suspended for 15 days!");
             mainLayout.setVisibility(View.INVISIBLE);
             bannedLayout.setVisibility(View.VISIBLE);
         }
         else
         {
-            bannedText.append(" permanently!");
+            bannedText.append("banned permanently!");
             mainLayout.setVisibility(View.INVISIBLE);
             bannedLayout.setVisibility(View.VISIBLE);
         }
