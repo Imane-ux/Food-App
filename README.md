@@ -1,7 +1,22 @@
 # Food-App
 
 ### SEG 2105 - Introduction to Software Engineering
-
+<p> 
+All you need for delivarable 2:
+*Administrator coordinates: Email: admin@admin.ca
+                            Password: group28
+* Cook's account related to the complaints: "since you don't have access to firebase"
+- if cook's UID= QkunXb5xfhNYePucwRuYetKMFL22;  Email:    seven@seven.ca
+                                                Password: 123456
+- if cook's UID= YyEhDIBj2HahwSI3K0gHGKORJu63;  Email:    one@one.ca
+                                                Password: 123456
+- if cook's UID= p3MFYPvMhgNUg2Kie4u9QPfNeT92;  Email:    two@two.ca
+                                                Password: 123456
+- if cook's UID= Ct1Hy0RzrHWh4kAoHWBH202HZ7v2;  Email:    five@five.ca
+                                                Password: 123456    
+- if cook's UID= IAO4xneNICe0AaPfdmgVOeEKxV33;  Email:    four@four.ca
+                                                Password: 123456                                              
+</p>
 <p> 
 Imane Amine - 300251048 <br>
 Nida Taj - 300239050 <br>
