@@ -80,7 +80,7 @@ public class AdminFragment extends Fragment {
                         ArrayList<String> listComplaints= new ArrayList<>();
                         listComplaints.add(complainerID);
                         Map<String, Object> listcomplaints = new HashMap<>();
-                        listcomplaints.put("List of complaints", listComplaints);
+                        listcomplaints.put("complaints", listComplaints);
                         re.updateChildren(listcomplaints);
 
                     }
