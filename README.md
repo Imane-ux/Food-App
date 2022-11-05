@@ -1,7 +1,7 @@
 # Food-App
 
 ### SEG 2105 - Introduction to Software Engineering
-<p> 
+
 All you need for delivarable 2:
 *Administrator coordinates: Email: admin@admin.ca
                             Password: group28
@@ -16,7 +16,7 @@ All you need for delivarable 2:
                                                 Password: 123456    
 - if cook's UID= IAO4xneNICe0AaPfdmgVOeEKxV33;  Email:    four@four.ca
                                                 Password: 123456                                              
-</p>
+
 <p> 
 Imane Amine - 300251048 <br>
 Nida Taj - 300239050 <br>
