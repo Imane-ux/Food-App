@@ -17,4 +17,30 @@ public class UserTest extends TestCase {
         assertEquals(expected2, user2.getRole());
     }
 
+//    @Test
+//    public void testGetUserDetails() {
+//
+//        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
+//        reference.child("YyEhDIBj2HahwSI3K0gHGKORJu63").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                String role = String.valueOf(dataSnapshot.child("role").getValue());
+//                String password = String.valueOf(dataSnapshot.child("role").getValue());
+//                String email = String.valueOf(dataSnapshot.child("role").getValue());
+//                String firstName = String.valueOf(dataSnapshot.child("role").getValue());
+//                String lastName = String.valueOf(dataSnapshot.child("role").getValue());
+//                String address = String.valueOf(dataSnapshot.child("role").getValue());
+//                User user = new User(role, password, email, firstName, lastName, address);
+//
+//                assertEquals("Cook", user.getRole());
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
+
 }

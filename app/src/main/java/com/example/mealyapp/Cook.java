@@ -29,4 +29,6 @@ public class Cook extends User {
     public ArrayList<String> getComplaints() {
         return complaints;
     }
+
+    public String toString() { return this.complaints.size() + " "; }
 }

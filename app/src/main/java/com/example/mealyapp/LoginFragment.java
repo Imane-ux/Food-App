@@ -1,13 +1,6 @@
 package com.example.mealyapp;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +9,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -66,7 +63,7 @@ public class LoginFragment extends Fragment {
 
                     Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_SHORT).show();
                     FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentContainer, new WelcomeClientFragment()).commit();
+                    fragmentTransaction.replace(R.id.fragmentContainer, new Welcome()).commit();
 
 
                 }else {

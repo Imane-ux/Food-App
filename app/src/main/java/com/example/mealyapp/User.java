@@ -20,5 +20,10 @@ public class User {
 
     public String getRole() { return this.role; }
 
+    public String toString()
+    {
+        return this.role + ", " + this.firstName + ", " + this.lastName;
+    }
+
 }
 
