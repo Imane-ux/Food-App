@@ -62,7 +62,7 @@ public class Welcome extends Fragment {
 
                 TextView tV = (TextView) view.findViewById(R.id.welcome_text);
 
-                if ((mAuth.getCurrentUser().getUid()).equals("40ylmmzjcSby42d0bMxG2ZO8EX12")){
+                if ((mAuth.getCurrentUser().getUid()).equals("19NivPZXZmbn7P7OKjtzc3MUSl53")){
                     tV.append(" Admin!");
 
                     Timer timer = new Timer();

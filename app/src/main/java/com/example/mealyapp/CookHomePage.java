@@ -62,12 +62,10 @@ public class CookHomePage extends Fragment {
 
         Button btn2= view.findViewById(R.id.logOut2_cook);
         btn2.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        logout();
-                                    }
-                                }
-        );
+            @Override
+            public void onClick(View v) {logout(); }
+        });
+
         Button btn= view.findViewById(R.id.logOut_cook);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -220,7 +218,6 @@ public class CookHomePage extends Fragment {
                 return vh;
             }
         };
-        //madapter.stopListening();
         adapter1.startListening();
         recyclerView1.setAdapter(adapter1);
 
