@@ -68,7 +68,7 @@ public class CookHomePage extends Fragment {
             }
         });
 
-        ImageButton btnAdd= view.findViewById(R.id.imageButton3);
+        ImageButton btnAdd= view.findViewById(R.id.imageBtn3);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,9 +77,9 @@ public class CookHomePage extends Fragment {
 
             }
         });
-        //mainLayout = view.findViewById(R.id.main_layout);
-        //bannedLayout = view.findViewById(R.id.banned_layout);
-        //bannedText = view.findViewById(R.id.banned_text);
+        mainLayout = view.findViewById(R.id.main_layout);
+        bannedLayout = view.findViewById(R.id.banned_layout);
+        bannedText = view.findViewById(R.id.banned_text);
         getCookDetails();
         return view;
     }
@@ -151,11 +151,10 @@ public class CookHomePage extends Fragment {
                         re.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                //DatabaseReference dr = FirebaseDatabase.getInstance().getReference("Offered Meals").child(mAuth.getUid());
-                                for(DataSnapshot postsnapshot: snapshot.getChildren()){
-                                    Meal meal= snapshot.getValue(Meal.class);
-                                    dr.setValue(meal);
-                                }
+                                Meal meal= snapshot.getValue(Meal.class);
+                                String id = dr.push().getKey();
+                                dr.child(id).setValue(meal);
+
 
                             }
 
@@ -181,7 +180,7 @@ public class CookHomePage extends Fragment {
         recyclerView0.setAdapter(madapter);
 
         // creating the firebase recycler view for the currently offered meal
-        /*FirebaseRecyclerOptions<Meal> options1 = new FirebaseRecyclerOptions.Builder<Meal>()
+        FirebaseRecyclerOptions<Meal> options1 = new FirebaseRecyclerOptions.Builder<Meal>()
                 .setQuery(dr, Meal.class).build();
         adapter1= new FirebaseRecyclerAdapter<Meal, MyViewHolder2>(options1) {
             @Override
@@ -213,8 +212,9 @@ public class CookHomePage extends Fragment {
                 return vh;
             }
         };
+        //madapter.stopListening();
         adapter1.startListening();
-        recyclerView1.setAdapter(adapter1);*/
+        recyclerView1.setAdapter(adapter1);
 
     }
 
@@ -341,7 +341,7 @@ public class CookHomePage extends Fragment {
     }
 
     public static class MyViewHolder1 extends RecyclerView.ViewHolder {
-        TextView itemName;
+        public TextView itemName;
         public TextView itemType;
         public TextView itemCuisine;
         public TextView itemIngredient;
@@ -365,7 +365,7 @@ public class CookHomePage extends Fragment {
         }
     }
     public static class MyViewHolder2 extends RecyclerView.ViewHolder {
-        TextView itemName;
+        public TextView itemName;
         public TextView itemType;
         public TextView itemCuisine;
         public TextView itemIngredient;

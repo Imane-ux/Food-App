@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,35 @@ public class AddMealFragment extends Fragment {
                 String mAllergens= inAllergens.getText().toString();
                 String mDescription = inDescription.getText().toString();
                 String userID = mAuth.getInstance().getCurrentUser().getUid();
+
+
+                if (TextUtils.isEmpty(mName)){
+                    inName.setError("Enter your meal's name!");
+                    btnDone.setClickable(false);
+
+                }
+                if (TextUtils.isEmpty(mtype)){
+                    inType.setError("Enter your meal's type!");
+                    btnDone.setClickable(false);
+                }
+                if (TextUtils.isEmpty(mcuisine)){
+                    inCuisine.setError("Enter your meal's cuisine type!");
+                    btnDone.setClickable(false);
+                }
+
+                if (TextUtils.isEmpty(mIngredients)){
+                    inIngredients.setError("Enter your meal's ingredients!");
+                    btnDone.setClickable(false);
+                }
+                if (TextUtils.isEmpty(mAllergens)){
+                    inAllergens.setError("Enter allergens present in your meal!. If none, type none");
+                    btnDone.setClickable(false);
+                }
+                if (TextUtils.isEmpty(mDescription)){
+                    inDescription.setError("Enter address!");
+                    btnDone.setClickable(false);
+                }else{
+
                 reference= FirebaseDatabase.getInstance().getReference("Meals").child(userID);
                 Meal meal= new Meal(mName, mtype,mcuisine,mIngredients,mAllergens,mDescription);
 
@@ -53,6 +83,7 @@ public class AddMealFragment extends Fragment {
                 reference.child(id).setValue(meal);
                 FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, new CookHomePage()).commit();
+                }
             }
         });
 
