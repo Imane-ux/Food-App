@@ -190,7 +190,7 @@ public class RegClientFragment extends Fragment {
 
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
                     FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentContainer, new WelcomeCookFragment()).commit();
+                    fragmentTransaction.replace(R.id.fragmentContainer, new WelcomeClientFragment()).commit();
 
 
                 }else {

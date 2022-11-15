@@ -80,17 +80,31 @@ public class Welcome extends Fragment {
                 else
                 {
                     tV.append(" " + role);
-
+                    // why do u have a timer here
                     Timer timer = new Timer();
-                    TimerTask timerTask = new TimerTask() {
-                        @Override
-                        public void run() {
-                            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                            fragmentTransaction.replace(R.id.fragmentContainer, new CookHomePage()).commit();
+                    if (role == "Cook"){
+                        TimerTask timerTask = new TimerTask() {
+                            @Override
+                            public void run() {
+                                FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.fragmentContainer, new CookHomePage()).commit();
+
                         }
                     };
+                        timer.schedule(timerTask, 1500);
+                    }else{
+                        TimerTask timerTask = new TimerTask() {
+                            @Override
+                            public void run() {
+                                // if statement will be added here, ignored for now because we still haven t gotten to it
+                                FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.fragmentContainer, new ClientHomePageFragment()).commit();
+                            }
+                        };
+                        timer.schedule(timerTask, 1500);
+                    }
 
-                    timer.schedule(timerTask, 1500);
+                    //timer.schedule(timerTask, 1500);
 
                 }
             }

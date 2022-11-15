@@ -33,6 +33,7 @@ public class WelcomeClientFragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_welcome_client, container, false);
         mAuth = FirebaseAuth.getInstance();
         final TextView tV= (TextView) view.findViewById(R.id.textView1);
+        // we don't need to check here agon do we, cuz its all defined in welcome()
         if ((mAuth.getCurrentUser().getUid()).equals("40ylmmzjcSby42d0bMxG2ZO8EX12")){
             String a= getString(R.string.wel_admin);
             tV.setText(a);
@@ -50,7 +51,7 @@ public class WelcomeClientFragment extends Fragment {
 
         }else{
 
-            Timer timer = new Timer();
+            /*Timer timer = new Timer();
             TimerTask timerTask = new TimerTask() {
                 @Override
                 public void run() {
@@ -59,7 +60,7 @@ public class WelcomeClientFragment extends Fragment {
                 }
             };
 
-            timer.schedule(timerTask, 1500);
+            timer.schedule(timerTask, 1500);*/
 
             tV.setText(getString(R.string.wel_client));
         }
