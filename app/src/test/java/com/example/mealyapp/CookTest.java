@@ -8,7 +8,7 @@ public class CookTest extends TestCase {
 
     @Test
     public void testIsPermanentlyBanned() {
-        Cook cook = new Cook("Client", true);
+        Cook cook = new Cook("Cook", true);
         boolean expected = true;
 
         assertEquals(expected, cook.isPermanentlyBanned());
@@ -17,7 +17,7 @@ public class CookTest extends TestCase {
     @Test
     public void testIsNotPermanentlyBanned()
     {
-        Cook cook = new Cook("Client", true);
+        Cook cook = new Cook("Cook", true);
         boolean expected = false;
 
         assertFalse(expected == cook.isPermanentlyBanned());

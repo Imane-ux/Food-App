@@ -40,6 +40,7 @@ public class RegCookChequeFragment extends Fragment {
     protected String password, firstName, lastName, email, address, description;
     FirebaseDatabase database;
     DatabaseReference mDatabase;
+    private Cook user;
     private static final String USER = "user";
 //
     Button back, registerCook;
@@ -128,8 +129,18 @@ public class RegCookChequeFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isComplete()) {
                     //String id = mDatabase.push().getKey();
-                    Cook cook = new Cook("Cook",password, email, firstName, lastName, address, description, new ArrayList<>());
-                    mDatabase.child(mAuth.getInstance().getCurrentUser().getUid()).setValue(cook);
+                    //ArrayList<String> complaints= new ArrayList<>();
+                    //complaints.add("ok");
+                    String userID = mAuth.getInstance().getCurrentUser().getUid();
+                    user  = new Cook("Cook",password, email, firstName, lastName, address, description, new ArrayList<>());
+                    mDatabase.child(userID).setValue(user);
+
+                    /*ArrayList<String> complaints= new ArrayList<>();
+                    complaints.add("ok");
+                    Cook cook = new Cook("Cook",password, email, firstName, lastName, address, description, complaints);
+                    String de= mAuth.getUid();
+
+                    mDatabase.child(de).setValue(cook);*/
 
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
                     FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();

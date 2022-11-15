@@ -77,12 +77,18 @@ public class Welcome extends Fragment {
                     timer.schedule(timerTask, 1500);
 
                 }
-                else
-                {
+                else {
                     tV.append(" " + role);
                     // why do u have a timer here
                     Timer timer = new Timer();
-                    if (role == "Cook"){
+                    TimerTask timerTask = new TimerTask() {
+                        @Override
+                        public void run() {
+                            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentContainer, new CookHomePage()).commit();
+                        }
+                    };
+                    /*if (role == "Cook"){
                         TimerTask timerTask = new TimerTask() {
                             @Override
                             public void run() {
@@ -92,7 +98,7 @@ public class Welcome extends Fragment {
                         }
                     };
                         timer.schedule(timerTask, 1500);
-                    }else{
+                    }else if (role =="Client"){
                         TimerTask timerTask = new TimerTask() {
                             @Override
                             public void run() {
@@ -102,9 +108,9 @@ public class Welcome extends Fragment {
                             }
                         };
                         timer.schedule(timerTask, 1500);
-                    }
+                    }*/
 
-                    //timer.schedule(timerTask, 1500);
+                    timer.schedule(timerTask, 1500);
 
                 }
             }

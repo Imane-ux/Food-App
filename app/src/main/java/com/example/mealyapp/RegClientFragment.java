@@ -36,7 +36,7 @@ public class RegClientFragment extends Fragment {
     DatabaseReference mDatabase;
     private static final String USER = "user";
     private static final String TAG = "RegClientFragment";
-    User user;
+    Client user;
 
    @SuppressLint("MissingInflatedId")
     @Nullable

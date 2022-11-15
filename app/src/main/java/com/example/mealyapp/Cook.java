@@ -24,11 +24,27 @@ public class Cook extends User {
         this.permanentBan = permanentBan;
     }
 
-    public boolean isPermanentlyBanned() { return permanentBan; }
+    public String getDescription() {
+        return description;
+    }
+
+    public String getStartOfBan() {
+        return startOfBan;
+    }
+
+    public int getDaysOfTemporaryBan() {
+        return daysOfTemporaryBan;
+    }
+
+    public boolean isPermanentBan() {
+        return permanentBan;
+    }
 
     public ArrayList<String> getComplaints() {
         return complaints;
     }
 
     public String toString() { return this.complaints.size() + " "; }
+
+    public boolean isPermanentlyBanned() { return permanentBan; }
 }

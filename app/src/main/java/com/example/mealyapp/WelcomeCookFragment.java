@@ -62,7 +62,7 @@ public class WelcomeCookFragment extends Fragment {
 
 
 
-        Button logout= (Button) view.findViewById(R.id.logoutID);
+        /*Button logout= (Button) view.findViewById(R.id.logoutID);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +72,7 @@ public class WelcomeCookFragment extends Fragment {
                 FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
                 fragmentTransaction.add(R.id.fragmentContainer, new StartFragment()).addToBackStack(null).commit();
             }
-        });
+        });*/
 
         return view;
 
