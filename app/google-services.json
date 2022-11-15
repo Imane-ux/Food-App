@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "315901612721",
-    "firebase_url": "https://mealy-app-default-rtdb.firebaseio.com",
-    "project_id": "mealy-app",
-    "storage_bucket": "mealy-app.appspot.com"
+    "project_number": "834219833473",
+    "firebase_url": "https://mealy-app-caa08-default-rtdb.firebaseio.com",
+    "project_id": "mealy-app-caa08",
+    "storage_bucket": "mealy-app-caa08.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:315901612721:android:a71cdea6706f9c8eeec890",
+        "mobilesdk_app_id": "1:834219833473:android:d6d2f0cbb94e3837c83580",
         "android_client_info": {
           "package_name": "com.example.mealyapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "315901612721-7his58q6375ti1okltiq2bg1d3uvngaa.apps.googleusercontent.com",
+          "client_id": "834219833473-30q6pc2fuv4ih3n9td864kbdd8pj6cf8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBuM9bhysBC-dW1_RH28gBFQJ_O1hjlvBo"
+          "current_key": "AIzaSyBd7tAKAAcveSJPy3uZEBkUXV3Xj07mJeI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "315901612721-7his58q6375ti1okltiq2bg1d3uvngaa.apps.googleusercontent.com",
+              "client_id": "834219833473-30q6pc2fuv4ih3n9td864kbdd8pj6cf8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
