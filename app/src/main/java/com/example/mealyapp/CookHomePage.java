@@ -28,6 +28,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -143,12 +145,18 @@ public class CookHomePage extends Fragment {
                 holder.itemIngredient.setText(model.getIngredients());
                 holder.itemAllergens.setText(model.getAllergens());
                 holder.itemDescription.setText(model.getDescription());
+                inOfferedList = false;
                 holder.del.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         //DatabaseReference re= ref0.child(mealID);
-                        re.removeValue();
-                        Toast.makeText(getActivity(), "Meal deleted", Toast.LENGTH_LONG).show();
+                        // if meal not in offered meals list, then:
+                        if (inOfferedList == false) {
+                            re.removeValue();
+                            Toast.makeText(getActivity(), "Meal deleted", Toast.LENGTH_LONG).show();
+                        }  else {
+                            Toast.makeText(getActivity(), "You need to delete meal from Currently Offered Meals list first", Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
                 holder.add.setOnClickListener(new View.OnClickListener() {
@@ -157,10 +165,14 @@ public class CookHomePage extends Fragment {
                         re.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                Meal meal= snapshot.getValue(Meal.class);
-                                String id = dr.push().getKey();
-                                dr.child(id).setValue(meal);
-
+                                if (inOfferedList == false){
+                                    inOfferedList = true;
+                                    Meal meal= snapshot.getValue(Meal.class);
+                                    String id = dr.push().getKey();
+                                    dr.child(id).setValue(meal);
+                                } else {
+                                    Toast.makeText(getActivity(), "Already added to Currently Offered Meals", Toast.LENGTH_LONG).show();
+                                }
 
                             }
 
@@ -201,9 +213,11 @@ public class CookHomePage extends Fragment {
                 holder.itemIngredient.setText(model.getIngredients());
                 holder.itemAllergens.setText(model.getAllergens());
                 holder.itemDescription.setText(model.getDescription());
+                holder.inOfferedList = true;
                 holder.itemRemove.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        inOfferedList = false;
                         re.removeValue();
                         Toast.makeText(getActivity(), "Meal removed from the currently offered meals' list", Toast.LENGTH_LONG).show();
                     }
@@ -345,6 +359,8 @@ public class CookHomePage extends Fragment {
         }
     }
 
+    public static boolean inOfferedList;
+
     public static class MyViewHolder1 extends RecyclerView.ViewHolder {
         public TextView itemName;
         public TextView itemType;
@@ -354,8 +370,6 @@ public class CookHomePage extends Fragment {
         public TextView itemDescription;
         ImageButton del;
         ImageButton add;
-
-
 
         public MyViewHolder1(View itemView) {
             super(itemView);
@@ -367,6 +381,7 @@ public class CookHomePage extends Fragment {
             itemDescription= itemView.findViewById(R.id.mealDescriptionId);
             del= itemView.findViewById(R.id.imgDelButton);
             add= itemView.findViewById(R.id.imgPlusButton);
+            inOfferedList = false;
         }
     }
     public static class MyViewHolder2 extends RecyclerView.ViewHolder {
@@ -377,7 +392,7 @@ public class CookHomePage extends Fragment {
         public TextView itemAllergens;
         public TextView itemDescription;
         ImageButton itemRemove;
-
+        public boolean inOfferedList;
 
         public MyViewHolder2(View itemView) {
             super(itemView);

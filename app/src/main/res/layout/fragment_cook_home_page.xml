@@ -18,7 +18,7 @@
             android:id="@+id/banned_text"
             android:layout_width="197dp"
             android:layout_height="32dp"
-            android:text="k"
+            android:text=""
             android:textColor="#0C0C0C"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
