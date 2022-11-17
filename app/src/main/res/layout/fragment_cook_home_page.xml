@@ -20,12 +20,13 @@
             android:layout_height="32dp"
             android:text=""
             android:textColor="#0C0C0C"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintHorizontal_bias="0.574"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.195" />
+            app:layout_constraintVertical_bias="0.337" />
 
         <Button
             android:id="@+id/logOut2_cook"

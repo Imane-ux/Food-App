@@ -1,5 +1,6 @@
 package com.example.mealyapp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,10 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class CookHomePage extends Fragment {
@@ -52,6 +49,10 @@ public class CookHomePage extends Fragment {
     private DatabaseReference dr;
     private FirebaseRecyclerAdapter<Meal, MyViewHolder1> madapter;
     private FirebaseRecyclerAdapter<Meal, MyViewHolder2> adapter1;
+
+    public CookHomePage(Context context) {}
+
+    public CookHomePage() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,7 +89,9 @@ public class CookHomePage extends Fragment {
         mainLayout = view.findViewById(R.id.main_layout);
         bannedLayout = view.findViewById(R.id.banned_layout);
         bannedText = view.findViewById(R.id.banned_text);
-        getCookDetails();
+
+        getCookDetails(mAuth.getCurrentUser().getUid());
+
         return view;
     }
 
@@ -126,9 +129,11 @@ public class CookHomePage extends Fragment {
         recyclerView.setAdapter(madapter);
         //madapter.notifyDataSetChanged();
     }*/
+
     @Override
     public void onStart() {
         super.onStart();
+
         // creating firebase recycler for only the menu not the current offered meals
         FirebaseRecyclerOptions<Meal> options = new FirebaseRecyclerOptions.Builder<Meal>()
                 .setQuery(ref0, Meal.class).build();
@@ -165,7 +170,7 @@ public class CookHomePage extends Fragment {
                         re.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (inOfferedList == false){
+                                if (inOfferedList == false){ //
                                     inOfferedList = true;
                                     Meal meal= snapshot.getValue(Meal.class);
                                     String id = dr.push().getKey();
@@ -255,10 +260,10 @@ public class CookHomePage extends Fragment {
 
 
     // Retrieving all cook's attributes from firebase;
-    public void getCookDetails()
+    public void getCookDetails(String uid)
     {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-        reference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        reference.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 getCookData(dataSnapshot);
@@ -272,7 +277,7 @@ public class CookHomePage extends Fragment {
 
     }
 
-    public void getCookData(DataSnapshot dataSnapshot)
+    public Cook getCookData(DataSnapshot dataSnapshot)
     {
         String role = String.valueOf(dataSnapshot.child("role").getValue());
         String password = String.valueOf(dataSnapshot.child("password").getValue());
@@ -287,10 +292,11 @@ public class CookHomePage extends Fragment {
             complaintStrings.add(snapshot.getValue().toString());
         }
 
-//        Toast.makeText(getActivity(), complaintStrings.size() + " ", Toast.LENGTH_SHORT).show();
         cook = new Cook(role, password, email, firstName, lastName, address, description, complaintStrings);
 
         getComplaints(cook);
+
+        return cook;
 
     }
 
@@ -302,7 +308,6 @@ public class CookHomePage extends Fragment {
             reference.child(cook.getComplaints().get(i)).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    Toast.makeText(getActivity(), cook.getComplaints().size() + " ", Toast.LENGTH_LONG).show();
                     getComplaintsData(dataSnapshot);
                 }
 
@@ -356,7 +361,13 @@ public class CookHomePage extends Fragment {
             bannedText.append("banned permanently!");
             mainLayout.setVisibility(View.INVISIBLE);
             bannedLayout.setVisibility(View.VISIBLE);
+            return;
         }
+    }
+
+    public int getNum(int a)
+    {
+        return a+1;
     }
 
     public static boolean inOfferedList;
@@ -384,6 +395,7 @@ public class CookHomePage extends Fragment {
             inOfferedList = false;
         }
     }
+
     public static class MyViewHolder2 extends RecyclerView.ViewHolder {
         public TextView itemName;
         public TextView itemType;

@@ -80,12 +80,18 @@ public class Welcome extends Fragment {
                 else {
                     tV.append(" " + role);
                     // why do u have a timer here
+                    // -> Because we want the welcome page to disappear after a few seconds. NN
                     Timer timer = new Timer();
                     TimerTask timerTask = new TimerTask() {
                         @Override
                         public void run() {
                             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                            fragmentTransaction.replace(R.id.fragmentContainer, new CookHomePage()).commit();
+                            if(role == "Cook") {
+                                fragmentTransaction.replace(R.id.fragmentContainer, new CookHomePage()).commit();
+                            }
+                            else{
+                                fragmentTransaction.replace(R.id.fragmentContainer, new ClientHomePageFragment()).commit();
+                            }
                         }
                     };
                     /*if (role == "Cook"){
