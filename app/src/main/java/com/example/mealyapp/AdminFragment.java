@@ -104,13 +104,15 @@ public class AdminFragment extends Fragment {
                 holder.itemBan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        suspendCookParmanently(complainerID);
+
+                        suspendCookParmanently(cookUId);
                     }
                     });
                 holder.itemSuspend.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        suspendCookTemporarily(complainerID);
+
+                        suspendCookTemporarily(cookUId);
                     }
                     });
             }
@@ -155,7 +157,7 @@ public class AdminFragment extends Fragment {
         }
 
         public boolean suspendCookTemporarily(String id){
-            DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Complaints").child(id);
+            DatabaseReference dR = FirebaseDatabase.getInstance().getReference("user").child(id);
 
             Date date = new Date();
             Timestamp ts = new Timestamp(date.getTime());
@@ -163,6 +165,8 @@ public class AdminFragment extends Fragment {
 
             Map<String, Object> temporaryBanUpdate = new HashMap<>();
             temporaryBanUpdate.put("daysOfTemporaryBan", 15);
+            temporaryBanUpdate.put("permanentBan",false);
+            temporaryBanUpdate.put("banned",true);
             temporaryBanUpdate.put("startOfBan", ts);
 
             dR.updateChildren(temporaryBanUpdate);
@@ -171,13 +175,14 @@ public class AdminFragment extends Fragment {
         }
 
         public boolean suspendCookParmanently(String id){
-            DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Complaints").child(id);
+            DatabaseReference dR = FirebaseDatabase.getInstance().getReference("user").child(id);
 
             Date date = new Date();
             Timestamp ts = new Timestamp(date.getTime());
 
             Map<String, Object> temporaryBanUpdate = new HashMap<>();
             temporaryBanUpdate.put("permanentBan", true);
+            temporaryBanUpdate.put("banned",true);
             temporaryBanUpdate.put("startOfBan", ts);
 
             dR.updateChildren(temporaryBanUpdate);
