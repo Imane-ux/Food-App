@@ -2,19 +2,19 @@
 
 ### SEG 2105 - Introduction to Software Engineering
 
-All you need for delivarable 2:
+All you need for delivarable 3:
 *Administrator coordinates: Email: admin@admin.ca
                             Password: group28
 * Cook's account related to the complaints: "since you don't have access to firebase"
-- if cook's UID= QkunXb5xfhNYePucwRuYetKMFL22;  Email:    seven@seven.ca
+- if cook's UID= APRC3oSojdTgQgX6AueXZIiawef1;  Email:    seven@seven.ca
                                                 Password: 123456
-- if cook's UID= YyEhDIBj2HahwSI3K0gHGKORJu63;  Email:    one@one.ca
+- if cook's UID= 2MsWl6aynRQhekQo6d2brVQhZX23;  Email:    one@one.ca
                                                 Password: 123456
-- if cook's UID= p3MFYPvMhgNUg2Kie4u9QPfNeT92;  Email:    two@two.ca
+- if cook's UID= fcRxTgZ7rzd7zKV2V6iIFANwKK32;  Email:    two@two.ca
                                                 Password: 123456
-- if cook's UID= Ct1Hy0RzrHWh4kAoHWBH202HZ7v2;  Email:    five@five.ca
+- if cook's UID= NsqDLaVSCTY1fK2rwdTI6jJ4b0p2;  Email:    five@five.ca
                                                 Password: 123456    
-- if cook's UID= IAO4xneNICe0AaPfdmgVOeEKxV33;  Email:    four@four.ca
+- if cook's UID= RprrUuube2duzrCxL8L8joxeowF2;  Email:    four@four.ca
                                                 Password: 123456                                              
 
 <p> 

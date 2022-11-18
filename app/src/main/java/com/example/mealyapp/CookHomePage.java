@@ -90,6 +90,7 @@ public class CookHomePage extends Fragment {
         bannedLayout = view.findViewById(R.id.banned_layout);
         bannedText = view.findViewById(R.id.banned_text);
 
+
         checkBan(mAuth.getCurrentUser().getUid());
 
 

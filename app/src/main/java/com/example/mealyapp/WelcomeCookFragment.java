@@ -61,19 +61,6 @@ public class WelcomeCookFragment extends Fragment {
         }
 
 
-
-        /*Button logout= (Button) view.findViewById(R.id.logoutID);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Toast.makeText(getActivity(), "logged out", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager= getParentFragmentManager();
-                FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.fragmentContainer, new StartFragment()).addToBackStack(null).commit();
-            }
-        });*/
-
         return view;
 
     }
