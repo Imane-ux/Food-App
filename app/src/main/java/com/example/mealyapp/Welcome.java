@@ -86,12 +86,13 @@ public class Welcome extends Fragment {
                         @Override
                         public void run() {
                             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                            if(role == "Cook") {
+                            fragmentTransaction.replace(R.id.fragmentContainer, new CookHomePage()).commit();
+                            /*if(role == "Cook") {
                                 fragmentTransaction.replace(R.id.fragmentContainer, new CookHomePage()).commit();
                             }
                             else{
                                 fragmentTransaction.replace(R.id.fragmentContainer, new ClientHomePageFragment()).commit();
-                            }
+                            }*/
                         }
                     };
                     /*if (role == "Cook"){
