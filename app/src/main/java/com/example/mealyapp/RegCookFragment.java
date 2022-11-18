@@ -101,6 +101,4 @@ public class RegCookFragment extends Fragment {
 
     }
 
-
-
 }

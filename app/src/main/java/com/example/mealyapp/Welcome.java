@@ -63,7 +63,7 @@ public class Welcome extends Fragment {
                 TextView tV = (TextView) view.findViewById(R.id.welcome_text);
 
                 if ((mAuth.getCurrentUser().getUid()).equals("19NivPZXZmbn7P7OKjtzc3MUSl53")){
-                    tV.append(" Admin!");
+                    tV.setText("Welcome Admin!");
 
                     Timer timer = new Timer();
                     TimerTask timerTask = new TimerTask() {
@@ -78,7 +78,7 @@ public class Welcome extends Fragment {
 
                 }
                 else {
-                    tV.append(" " + role);
+                    tV.setText("Welcome " + role);
                     // why do u have a timer here
                     // -> Because we want the welcome page to disappear after a few seconds. NN
                     Timer timer = new Timer();

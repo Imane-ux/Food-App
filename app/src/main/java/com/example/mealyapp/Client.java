@@ -12,6 +12,8 @@ public class Client extends User{
         this.nameOnCard = nameOnCard;
     }
 
+    public Client(){}
+
     public Client(String role)
     {
         super(role);

@@ -143,7 +143,7 @@ public class CookHomePage extends Fragment {
             protected void onBindViewHolder(@NonNull MyViewHolder1 holder, int position, @NonNull Meal model) {
 
                 final String mealID= getRef(position).getKey();
-                DatabaseReference re= ref0.child(mealID);
+                DatabaseReference re = ref0.child(mealID);
 
                 holder.itemName.setText(model.getName());
                 holder.itemType.setText(model.getType());
@@ -171,7 +171,7 @@ public class CookHomePage extends Fragment {
                         re.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (inOfferedList == false){ //
+                                if (inOfferedList == false){
                                     inOfferedList = true;
                                     Meal meal= snapshot.getValue(Meal.class);
                                     String id = dr.push().getKey();
@@ -243,6 +243,7 @@ public class CookHomePage extends Fragment {
 
     }
 
+
     @Override
     public void onStop() {
         super.onStop();
@@ -270,18 +271,17 @@ public class CookHomePage extends Fragment {
                 //String daysOfTempoBAn = String.valueOf(snapshot.child("daysOfTemporaryBan").getValue());
                 String isbanned= String.valueOf(snapshot.child("banned").getValue());
                 //Boolean permanentBan2 = ( Boolean) snapshot.child("permanentBan").getValue();
-                if (permanentBan2== "true" & isbanned=="true"){
-                    bannedText.setText("suspended for 15 days!");
+                if (permanentBan2 == "true"){
+                    bannedText.setText("Banned permanently!");
                     bannedText.setVisibility(View.VISIBLE);
                     mainLayout.setVisibility(View.INVISIBLE);
                     bannedLayout.setVisibility(View.VISIBLE);
-
-                }else if ( permanentBan2== "false" && isbanned=="true"){
-                    bannedText.setText("banned permanently!");
+                }
+                else if (isbanned == "true"){
+                    bannedText.setText("Suspended for 15 days!");
                     bannedText.setVisibility(View.VISIBLE);
                     mainLayout.setVisibility(View.INVISIBLE);
                     bannedLayout.setVisibility(View.VISIBLE);
-                    //return;
                 }
             }
 

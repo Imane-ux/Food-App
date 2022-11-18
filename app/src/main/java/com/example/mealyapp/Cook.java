@@ -19,6 +19,8 @@ public class Cook extends User {
         this.startOfBan = null;
     }
 
+    public Cook(){ this.complaints = new ArrayList<>(); }
+
     public Cook(String role, boolean permanentBan)
     {
         super(role);
@@ -49,7 +51,9 @@ public class Cook extends User {
         return complaints;
     }
 
-    public String toString() { return this.complaints.size() + " "; }
+    public int getNumberOfComplaints() { return this.complaints.size(); }
+
+    public void addComplaint(String complaint) { this.complaints.add(complaint); }
 
     public boolean isPermanentlyBanned() { return permanentBan; }
 }

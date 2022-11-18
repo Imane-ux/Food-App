@@ -13,4 +13,5 @@ public class ComplaintTest extends TestCase {
 
         assertEquals(expected, complaint.getComplaint());
     }
+
 }
