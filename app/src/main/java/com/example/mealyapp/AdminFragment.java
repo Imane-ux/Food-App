@@ -11,11 +11,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,12 +43,17 @@ public class AdminFragment extends Fragment {
         // Inflate the layout for this fragment
         View v =inflater.inflate(R.layout.fragment_admin, container, false);
 
-        /*recyclerView= getActivity().findViewById(R.id.recyclerView1);
-        //recyclerView.setHasFixedSize(true);
-        ref= FirebaseDatabase.getInstance().getReference().child("Complaints");
-        layoutManager= new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);*/
-
+        Button outBtn = (Button) v.findViewById(R.id.logoffiD);
+        outBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(getActivity(), "Logged out", Toast.LENGTH_SHORT).show();
+                FragmentManager fragmentManager= getParentFragmentManager();
+                FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.fragmentContainer, new StartFragment()).addToBackStack(null).commit();
+            }
+        });
         return v;
     }
 
