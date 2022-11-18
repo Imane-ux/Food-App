@@ -92,7 +92,6 @@ public class CookHomePage extends Fragment {
 
         checkBan(mAuth.getCurrentUser().getUid());
 
-        //getCookDetails(mAuth.getCurrentUser().getUid());
 
         return view;
     }
@@ -260,96 +259,6 @@ public class CookHomePage extends Fragment {
         fragmentTransaction.add(R.id.fragmentContainer, new StartFragment()).addToBackStack(null).commit();
     }
 
-
-    // Retrieving all cook's attributes from firebase;
-    public void getCookDetails(String uid)
-    {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-        reference.child(uid).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                getCookData(dataSnapshot);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
-
-    public Cook getCookData(DataSnapshot dataSnapshot)
-    {
-        String role = String.valueOf(dataSnapshot.child("role").getValue());
-        String password = String.valueOf(dataSnapshot.child("password").getValue());
-        String email = String.valueOf(dataSnapshot.child("email").getValue());
-        String firstName = String.valueOf(dataSnapshot.child("firstName").getValue());
-        String lastName = String.valueOf(dataSnapshot.child("lastName").getValue());
-        String address = String.valueOf(dataSnapshot.child("address").getValue());
-        String description = String.valueOf(dataSnapshot.child("description").getValue());
-        ArrayList<String> complaintStrings = new ArrayList<>();
-
-        for (DataSnapshot snapshot: dataSnapshot.child("complaints").getChildren()) {
-            complaintStrings.add(snapshot.getValue().toString()); // getting complaint+ uid
-        }
-
-        cook = new Cook(role, password, email, firstName, lastName, address, description, complaintStrings);
-
-        //getComplaints(cook);
-
-        return cook;
-
-    }
-
-    // Getting all complaints associated with the current cook.
-    /*public void getComplaints(Cook cook)
-    {
-        for(int i = 0; i < cook.getComplaints().size(); i++) {
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Complaints");
-            reference.child(cook.getComplaints().get(i)).addValueEventListener(new ValueEventListener() { //1st complaint
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    getComplaintsData(dataSnapshot);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
-        }
-
-    }*/
-    //U don't have to go every single complaint, u can just add an attribute in the cook reference immediately after a suspension action
-
-    /*public void getComplaintsData(DataSnapshot dataSnapshot)
-    {
-        String cookUID = String.valueOf(dataSnapshot.child("cookUID").getValue());
-        String complaint = String.valueOf(dataSnapshot.child("complaint").getValue());
-//        String startOfBan = String.valueOf(dataSnapshot.child("startOfBan").getValue());
-//        String days = String.valueOf(dataSnapshot.child("daysOfTemporaryBan").getValue());
-//        String permanent = String.valueOf(dataSnapshot.child("permanentBan").getValue());
-        int daysOfTemporaryBan = 0;
-        boolean permanentBan1 = false;
-
-        if(String.valueOf(dataSnapshot.child("daysOfTemporaryBan").getValue()).equals("15"))
-        {
-            daysOfTemporaryBan = 15;
-            daysOfBanLeft = 15;
-        }
-        if(String.valueOf(dataSnapshot.child("permanentBan").getValue()).equals("true"))
-        {
-            permanentBan1 = true;
-            permanentlyBanned = true;
-        }
-
-        complaints.add(new Complaint(cookUID, complaint, null, daysOfTemporaryBan, permanentBan1));
-
-        //checkBan(complaints);
-    }*/
-
     public void checkBan(String cOOKuid){
         DatabaseReference newr;
         newr = FirebaseDatabase.getInstance().getReference("user").child(cOOKuid);
@@ -358,16 +267,18 @@ public class CookHomePage extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String permanentBan2 = String.valueOf(snapshot.child("permanentBan").getValue());
-                String daysOfTempoBAn = String.valueOf(snapshot.child("daysOfTemporaryBan").getValue());
+                //String daysOfTempoBAn = String.valueOf(snapshot.child("daysOfTemporaryBan").getValue());
                 String isbanned= String.valueOf(snapshot.child("banned").getValue());
                 //Boolean permanentBan2 = ( Boolean) snapshot.child("permanentBan").getValue();
                 if (permanentBan2== "true" & isbanned=="true"){
-                    bannedText.append("suspended for 15 days!");
+                    bannedText.setText("suspended for 15 days!");
+                    bannedText.setVisibility(View.VISIBLE);
                     mainLayout.setVisibility(View.INVISIBLE);
                     bannedLayout.setVisibility(View.VISIBLE);
 
                 }else if ( permanentBan2== "false" && isbanned=="true"){
-                    bannedText.append("banned permanently!");
+                    bannedText.setText("banned permanently!");
+                    bannedText.setVisibility(View.VISIBLE);
                     mainLayout.setVisibility(View.INVISIBLE);
                     bannedLayout.setVisibility(View.VISIBLE);
                     //return;
@@ -379,28 +290,6 @@ public class CookHomePage extends Fragment {
 
             }
         });
-    }
-    // Checking if the cook is banned.
-    /*public void checkBan(ArrayList<Complaint> complaints)
-    {
-        if(!complaints.get(0).getPermanentBan())
-        {
-            bannedText.append("suspended for 15 days!");
-            mainLayout.setVisibility(View.INVISIBLE);
-            bannedLayout.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-            bannedText.append("banned permanently!");
-            mainLayout.setVisibility(View.INVISIBLE);
-            bannedLayout.setVisibility(View.VISIBLE);
-            return;
-        }
-    }*/
-
-    public int getNum(int a)
-    {
-        return a+1;
     }
 
     public static boolean inOfferedList;
