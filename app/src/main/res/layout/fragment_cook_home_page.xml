@@ -136,7 +136,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="invvisible">
+        tools:visibility="invisible">
 
         <TextView
             android:id="@+id/banned_text"
@@ -152,7 +152,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.396"
             tools:text="@string/banned"
-            android:visibility="invvisible"/>
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/logOut2_cook"
