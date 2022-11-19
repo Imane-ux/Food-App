@@ -2,7 +2,24 @@
 
 ### SEG 2105 - Introduction to Software Engineering
 
-All you need for delivarable 3:
+
+All you need for deliverable 3:
+*Administrator coordinates: Email: admin@admin.ca
+                            Password: group28
+- a cook account that was banned permanently: Email: co@cook.ca
+                                              Password: 123456
+- a cook account that was banned temporarily: Email: k@work.ca
+                                              Password: 123456
+- you can still suspend some of the admin's complaints to test it more, all the credentials are stated below in "All you need for deliv 3 section"
+- Cooks accounts that weren't suspended at all:
+  1.  Email:    three@three.ca 
+      Password: 123456
+  2.  Email:    six@six.ca
+      Password: 123456
+  3.  Email:    cook@cook.ca
+      Password: 123456
+
+All you need for delivarable 2:
 *Administrator coordinates: Email: admin@admin.ca
                             Password: group28
 * Cook's account related to the complaints: "since you don't have access to firebase"
