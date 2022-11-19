@@ -172,14 +172,19 @@ public class CookHomePage extends Fragment {
                         re.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (inOfferedList == false){
-                                    inOfferedList = true;
-                                    Meal meal= snapshot.getValue(Meal.class);
-                                    String id = dr.push().getKey();
-                                    dr.child(id).setValue(meal);
-                                } else {
-                                    Toast.makeText(getActivity(), "Already added to Currently Offered Meals", Toast.LENGTH_LONG).show();
-                                }
+                                inOfferedList =true;
+                                Meal meal= snapshot.getValue(Meal.class);
+                                String id = dr.push().getKey();
+                                dr.child(id).setValue(meal);
+
+//                                if (inOfferedList == false){
+//                                    inOfferedList = true;
+//                                    Meal meal= snapshot.getValue(Meal.class);
+//                                    String id = dr.push().getKey();
+//                                    dr.child(id).setValue(meal);
+//                                } else {
+//                                    Toast.makeText(getActivity(), "Already added to Currently Offered Meals", Toast.LENGTH_LONG).show();
+//                                }
 
                             }
 
