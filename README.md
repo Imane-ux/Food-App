@@ -10,7 +10,7 @@ All you need for deliverable 3:
                                               Password: 123456
 - a cook account that was banned temporarily: Email: k@work.ca
                                               Password: 123456
-- you can still suspend some of the admin's complaints to test it more, all the credentials are stated below in "All you need for deliv 3 section"
+- you can still suspend some of the admin's complaints to test it more, all the credentials are stated below in "All you need for deliv 2 section"
 - Cooks accounts that weren't suspended at all:
   1.  Email:    three@three.ca 
       Password: 123456
