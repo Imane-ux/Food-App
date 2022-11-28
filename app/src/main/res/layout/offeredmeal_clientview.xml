@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="335dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    card_view:cardBackgroundColor="#FFFF"
+    card_view:cardCornerRadius="8dp"
+    card_view:contentPadding="10dp"
+    android:foreground="?selectableItemBackground"
+    android:focusable="true"
+    android:clickable="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/priceMealc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Price"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/mealNamec"
+                    android:layout_width="298dp"
+                    android:layout_height="match_parent"
+                    android:text="Meal Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imgPlusButtonc"
+                    android:layout_width="59dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/round_btn"
+                    card_view:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="117dp"
+                android:layout_height="wrap_content"
+
+                android:text="Meal Type: "
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mealTypec"
+                android:layout_width="200dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="5dp"
+                android:text="TextView" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="95dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:text="Cuisine Type:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cuisineTypec"
+                android:layout_width="150dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="5dp"
+                android:text="TextView" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:text="Ingredients:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/listIngredientsC"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:text="TextView"
+                android:layout_marginStart="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="155dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="117dp"
+                android:layout_height="wrap_content"
+                android:text="Allergens:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/allergensIDc"
+                android:layout_width="240dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="5dp"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="43dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="185dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:text="Description:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mealDescriptionIdc"
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
+                android:layout_marginStart="5dp"
+                android:text="TextView" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="215dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Cook's Name:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cookNamec"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginStart="5dp"
+                android:text="TextView" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="43dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="250dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="122dp"
+                android:layout_height="31dp"
+                android:text="Pick-Up Address:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cookAddressc"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="5dp"
+                android:text="TextView" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="43dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="280dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
+                android:text="Cook's description:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cookDescriptionIdc"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="5dp"
+                android:text="TextView" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
