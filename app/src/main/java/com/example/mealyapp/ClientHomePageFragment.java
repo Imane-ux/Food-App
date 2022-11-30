@@ -99,7 +99,7 @@ public class ClientHomePageFragment extends Fragment {
                         String name= String.valueOf(snapshot.child("firstName").getValue());
                         String address= String.valueOf(snapshot.child("address").getValue());
                         String description= String.valueOf(snapshot.child("description").getValue());
-                        holder.itemName.setText(name);
+                        holder.itemCookName.setText(name);
                         holder.itemCookAddress.setText(address);
                         holder.itemCookDescription.setText(description);
                         }
