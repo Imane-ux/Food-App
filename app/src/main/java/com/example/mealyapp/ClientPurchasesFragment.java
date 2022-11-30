@@ -50,7 +50,7 @@ public class ClientPurchasesFragment extends Fragment {
     public void onStart() {
         super.onStart();
         FirebaseRecyclerOptions<PurchaseRequest> options = new FirebaseRecyclerOptions.Builder<PurchaseRequest>()
-                .setQuery(refp, PurchaseRequest.class).build();
+                .setQuery(refp.child(mAuth.getUid()), PurchaseRequest.class).build();
         // filtered here?
         madapterP= new FirebaseRecyclerAdapter<PurchaseRequest, MyViewHolder4>(options) {
             @Override
@@ -89,7 +89,7 @@ public class ClientPurchasesFragment extends Fragment {
         public MyViewHolder4(View itemView) {
             super(itemView);
             itemMealName= itemView.findViewById(R.id.mealN0);
-            itemMealStatus= itemView.findViewById(R.id.mealStatus);
+            itemMealStatus= itemView.findViewById(R.id.mealStatusC);
             add= itemView.findViewById(R.id.imgPlusButtonP);
         }
     }

@@ -1,13 +1,13 @@
 package com.example.mealyapp;
 
 public class PurchaseRequest {
-    String status;
-    String meal;
 
+    String meal;
+    String status;
     public PurchaseRequest(String mealName) {
 
-        this.status= "pending";
         this.meal=mealName;
+        this.status= "pending";
     }
     
 

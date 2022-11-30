@@ -113,10 +113,10 @@ public class ClientHomePageFragment extends Fragment {
                 holder.add.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Purchase Requests");
                         String userID = mAuth.getInstance().getCurrentUser().getUid();
-                        PurchaseRequest pr= new PurchaseRequest(model.getName());
-                        ref.child(userID).setValue(pr);
+                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Purchase Requests").child(userID);
+                        String id= ref.push().getKey();
+                        ref.child(id).setValue(new PurchaseRequest(model.getName()));
 
                         DatabaseReference reff = FirebaseDatabase.getInstance().getReference("Requests");
                         reff.child(cookUID).setValue(new Request( userID, model.getName()));
