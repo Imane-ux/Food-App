@@ -56,7 +56,7 @@ public class ClientHomePageFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ref2 = FirebaseDatabase.getInstance().getReference("Offered Meals");
+        ref2 = FirebaseDatabase.getInstance().getReference("Meals To Clients");
         recyclerView2= getActivity().findViewById(R.id.recyclerViewclient1);
         recyclerView2.setHasFixedSize(true);
         layoutManager2= new LinearLayoutManager(getActivity());
@@ -81,16 +81,18 @@ public class ClientHomePageFragment extends Fragment {
                 holder.itemCuisine.setText(model.getCuisine());
                 holder.itemIngredient.setText(model.getIngredients());
                 holder.itemAllergens.setText(model.getAllergens());
+                holder.itemPrice.setText(model.getPrice());
                 holder.itemDescription.setText(model.getDescription());
+                String cookUID= model.getCookId();
 
 
-                final String cookUID;
+                /*final String cookUID;
                 if (mealCookID.charAt(0)== '-'){
                     DatabaseReference ref= FirebaseDatabase.getInstance().getReference(getRef(position).getKey());
                     cookUID= ref.getKey();
                 }else{
                     cookUID= getRef(position).getKey();
-                }
+                }*/
                 DatabaseReference re1 = FirebaseDatabase.getInstance().getReference("user").child(cookUID);
                 re1.addValueEventListener(new ValueEventListener() {
                     @Override
