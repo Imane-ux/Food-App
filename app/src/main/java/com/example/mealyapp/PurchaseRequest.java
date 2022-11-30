@@ -15,6 +15,10 @@ public class PurchaseRequest {
         return status;
     }
 
+    public String getMeal() {
+        return meal;
+    }
+
     public void setStatus(String status) {
         this.status = status;
     }

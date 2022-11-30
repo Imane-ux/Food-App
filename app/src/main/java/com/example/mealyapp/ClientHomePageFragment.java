@@ -1,6 +1,5 @@
 package com.example.mealyapp;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -57,7 +56,7 @@ public class ClientHomePageFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ref2 = FirebaseDatabase.getInstance().getReference("Meals To Clients");
-        recyclerView2= getActivity().findViewById(R.id.recyclerViewclient1);
+        recyclerView2= getActivity().findViewById(R.id.recyclerPurchaseRequest);
         recyclerView2.setHasFixedSize(true);
         layoutManager2= new LinearLayoutManager(getActivity());
         recyclerView2.setLayoutManager(layoutManager2);
@@ -97,7 +96,7 @@ public class ClientHomePageFragment extends Fragment {
                 re1.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        final String name= String.valueOf(snapshot.child("firstName").getValue());
+                        String name= String.valueOf(snapshot.child("firstName").getValue());
                         String address= String.valueOf(snapshot.child("address").getValue());
                         String description= String.valueOf(snapshot.child("description").getValue());
                         holder.itemName.setText(name);

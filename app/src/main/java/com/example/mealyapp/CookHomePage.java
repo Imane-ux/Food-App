@@ -87,6 +87,16 @@ public class CookHomePage extends Fragment {
 
             }
         });
+
+        Button btn1= view.findViewById(R.id.vRequests);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, new CooksRequests()).commit();
+            }
+        });
+
         mainLayout = view.findViewById(R.id.main_layout);
         bannedLayout = view.findViewById(R.id.banned_layout);
         bannedText = view.findViewById(R.id.banned_text);
