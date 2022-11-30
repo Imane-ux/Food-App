@@ -27,7 +27,7 @@ public class ClientPurchasesFragment extends Fragment {
     private RecyclerView recyclerV;
     private RecyclerView.LayoutManager layoutM;
     private DatabaseReference refp;
-    private FirebaseRecyclerAdapter<PurchaseRequest, MyViewHolder4> madapterP;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,12 +51,12 @@ public class ClientPurchasesFragment extends Fragment {
         super.onStart();
         FirebaseRecyclerOptions<PurchaseRequest> options = new FirebaseRecyclerOptions.Builder<PurchaseRequest>()
                 .setQuery(refp.child(mAuth.getUid()), PurchaseRequest.class).build();
-        // filtered here?
-        madapterP= new FirebaseRecyclerAdapter<PurchaseRequest, MyViewHolder4>(options) {
+
+        FirebaseRecyclerAdapter<PurchaseRequest, MyViewHolder4> madapterP = new FirebaseRecyclerAdapter<PurchaseRequest, MyViewHolder4>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder4 holder, int position, @NonNull PurchaseRequest model) {
 
-                final String CookID= getRef(position).getKey();
+                final String ClientID= getRef(position).getKey();
                 holder.itemMealName.setText(model.getMeal());
                 holder.itemMealStatus.setText(model.getStatus());
                 holder.add.setOnClickListener(new View.OnClickListener() {
