@@ -33,6 +33,7 @@ public class AddMealFragment extends Fragment {
         EditText inIngredients= view.findViewById(R.id.etIngredients);
         EditText inAllergens= view.findViewById(R.id.etALlergens);
         EditText inDescription= view.findViewById(R.id.etDescription);
+        EditText inPrice= view.findViewById(R.id.eTPrice);
 
         Button btnDone= view.findViewById(R.id.doneBTn);
         btnDone.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +45,7 @@ public class AddMealFragment extends Fragment {
                 String mIngredients= inIngredients.getText().toString();
                 String mAllergens= inAllergens.getText().toString();
                 String mDescription = inDescription.getText().toString();
+                String mPrice= inPrice.getText().toString();
                 String userID = mAuth.getInstance().getCurrentUser().getUid();
 
 
@@ -68,13 +70,17 @@ public class AddMealFragment extends Fragment {
                     inAllergens.setError("Enter allergens present in your meal!. If none, type none");
                     btnDone.setClickable(false);
                 }
+                if (TextUtils.isEmpty(mPrice)){
+                    inAllergens.setError("Enter your meal's price!. It can't be for free, no? ");
+                    btnDone.setClickable(false);
+                }
                 if (TextUtils.isEmpty(mDescription)){
                     inDescription.setError("Enter address!");
                     btnDone.setClickable(false);
                 }else{
 
                 reference= FirebaseDatabase.getInstance().getReference("Meals").child(userID);
-                Meal meal= new Meal(mName, mtype,mcuisine,mIngredients,mAllergens,mDescription);
+                Meal meal= new Meal(mName, mtype,mcuisine,mIngredients,mAllergens,mPrice, mDescription, userID);
 
                 //String userID = mAuth.getInstance().getCurrentUser().getUid();
                 String id = reference.push().getKey();

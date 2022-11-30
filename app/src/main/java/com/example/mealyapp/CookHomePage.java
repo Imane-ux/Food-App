@@ -47,6 +47,7 @@ public class CookHomePage extends Fragment {
     private RecyclerView.LayoutManager layoutManager1;
     private DatabaseReference ref0;
     private DatabaseReference dr;
+    private DatabaseReference refc;
     private FirebaseRecyclerAdapter<Meal, MyViewHolder1> madapter;
     private FirebaseRecyclerAdapter<Meal, MyViewHolder2> adapter1;
 
@@ -106,6 +107,8 @@ public class CookHomePage extends Fragment {
         layoutManager0= new LinearLayoutManager(getActivity());
         recyclerView0.setLayoutManager(layoutManager0);
 
+        refc= FirebaseDatabase.getInstance().getReference("Meals To Clients");
+
         dr = FirebaseDatabase.getInstance().getReference("Offered Meals").child(mAuth.getUid());
         recyclerView1= getActivity().findViewById(R.id.recyclerViewcook1);
         recyclerView1.setHasFixedSize(true);
@@ -151,6 +154,7 @@ public class CookHomePage extends Fragment {
                 holder.itemCuisine.setText(model.getCuisine());
                 holder.itemIngredient.setText(model.getIngredients());
                 holder.itemAllergens.setText(model.getAllergens());
+                holder.itemPrice.setText(model.getPrice());
                 holder.itemDescription.setText(model.getDescription());
                 inOfferedList = false;
                 holder.del.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +164,7 @@ public class CookHomePage extends Fragment {
                         // if meal not in offered meals list, then:
                         if (inOfferedList == false) {
                             re.removeValue();
+                            //refc.child(mealID).removeValue();
                             Toast.makeText(getActivity(), "Meal deleted", Toast.LENGTH_LONG).show();
                         }  else {
                             Toast.makeText(getActivity(), "You need to delete meal from Currently Offered Meals list first", Toast.LENGTH_LONG).show();
@@ -175,6 +180,7 @@ public class CookHomePage extends Fragment {
                                 inOfferedList =true;
                                 Meal meal= snapshot.getValue(Meal.class);
                                 String id = dr.push().getKey();
+                                refc.child(id).setValue(meal);
                                 dr.child(id).setValue(meal);
 
 //                                if (inOfferedList == false){
@@ -224,6 +230,7 @@ public class CookHomePage extends Fragment {
                 holder.itemCuisine.setText(model.getCuisine());
                 holder.itemIngredient.setText(model.getIngredients());
                 holder.itemAllergens.setText(model.getAllergens());
+                holder.itemPrice.setText(model.getPrice());
                 holder.itemDescription.setText(model.getDescription());
                 holder.inOfferedList = true;
                 holder.itemRemove.setOnClickListener(new View.OnClickListener() {
@@ -231,6 +238,7 @@ public class CookHomePage extends Fragment {
                     public void onClick(View v) {
                         inOfferedList = false;
                         re.removeValue();
+                        refc.child(off_mealID).removeValue();
                         Toast.makeText(getActivity(), "Meal removed from the currently offered meals' list", Toast.LENGTH_LONG).show();
                     }
                 });
@@ -307,6 +315,7 @@ public class CookHomePage extends Fragment {
         public TextView itemIngredient;
         public TextView itemAllergens;
         public TextView itemDescription;
+        public TextView itemPrice;
         ImageButton del;
         ImageButton add;
 
@@ -318,6 +327,7 @@ public class CookHomePage extends Fragment {
             itemIngredient=  itemView.findViewById(R.id.listIngredients);
             itemAllergens= itemView.findViewById(R.id.allergensID);
             itemDescription= itemView.findViewById(R.id.mealDescriptionId);
+            itemPrice=  itemView.findViewById(R.id.priceMealCook);
             del= itemView.findViewById(R.id.imgDelButton);
             add= itemView.findViewById(R.id.imgPlusButton);
             inOfferedList = false;
@@ -331,6 +341,7 @@ public class CookHomePage extends Fragment {
         public TextView itemIngredient;
         public TextView itemAllergens;
         public TextView itemDescription;
+        public TextView itemPrice;
         ImageButton itemRemove;
         public boolean inOfferedList;
 
@@ -342,6 +353,7 @@ public class CookHomePage extends Fragment {
             itemIngredient=  itemView.findViewById(R.id.listIngredients1);
             itemAllergens= itemView.findViewById(R.id.allergensID1);
             itemDescription= itemView.findViewById(R.id.mealDescriptionId1);
+            itemPrice= itemView.findViewById(R.id.priceMealCook2);
             itemRemove= itemView.findViewById(R.id.imgREMButton1);
         }
     }

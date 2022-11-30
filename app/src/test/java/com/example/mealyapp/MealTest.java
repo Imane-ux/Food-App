@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 public class MealTest extends TestCase {
 
-    Meal meal = new Meal("a", "a", "a", "a", "a", "a");
+    Meal meal = new Meal("a", "a", "a", "a", "a", "a","a","a");
 
     public void testSetType() {
         meal.setType("Italian");
