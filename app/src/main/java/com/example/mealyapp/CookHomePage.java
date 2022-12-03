@@ -64,6 +64,15 @@ public class CookHomePage extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         complaints = new ArrayList<>();
 
+        ImageButton profileButton = view.findViewById(R.id.profile_button);
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                fragmentTransaction.add(R.id.fragmentContainer, new CookProfileFragment()).addToBackStack("CookProfileFragment").commit();
+            }
+        });
+
         Button btn2= view.findViewById(R.id.logOut2_cook);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
