@@ -8,6 +8,7 @@ public class Cook extends User {
     private int daysOfTemporaryBan;
     private boolean permanentBan, banned;
     private ArrayList<String> complaints;
+    private double rating, ratingCount;
 
     public Cook(String role, String password, String email, String firstName, String lastName, String address, String description, ArrayList<String> complaints) {
         super(role, password, email, firstName, lastName, address);
@@ -17,6 +18,8 @@ public class Cook extends User {
         this.banned=false;
         this.permanentBan = false;
         this.startOfBan = null;
+        this.rating = 0.0;
+        this.ratingCount = 0.0;
     }
 
     public Cook(){ this.complaints = new ArrayList<>(); }
@@ -56,4 +59,9 @@ public class Cook extends User {
     public void addComplaint(String complaint) { this.complaints.add(complaint); }
 
     public boolean isPermanentlyBanned() { return permanentBan; }
+
+    public void rate(double newRating){
+        rating = ((rating * ratingCount) + newRating)/(ratingCount+1);
+        ratingCount++;
+    }
 }

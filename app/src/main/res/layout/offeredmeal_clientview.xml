@@ -13,7 +13,8 @@
     card_view:contentPadding="10dp"
     android:foreground="?selectableItemBackground"
     android:focusable="true"
-    android:clickable="true">
+    android:clickable="true"
+    android:id="@+id/meal_card">
 
 
     <LinearLayout

@@ -1,20 +1,20 @@
 package com.example.mealyapp;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -46,7 +46,7 @@ public class ClientHomePageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, new ClientPurchasesFragment()).commit();
+                fragmentTransaction.add(R.id.fragmentContainer, new ClientPurchasesFragment()).addToBackStack("ClientPurchasesFragment").commit();
             }
         });
         return view;
@@ -102,7 +102,15 @@ public class ClientHomePageFragment extends Fragment {
                         holder.itemCookName.setText(name);
                         holder.itemCookAddress.setText(address);
                         holder.itemCookDescription.setText(description);
-                        }
+
+                        holder.itemCard.setOnClickListener(new View.OnClickListener(){
+                            @Override
+                            public void onClick(View v){
+                                FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                                fragmentTransaction.add(R.id.fragmentContainer, new MealDetailsFragment(model, snapshot)).addToBackStack("MealDetailsFragment").commit();
+                            }
+                        });
+                    }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
@@ -123,7 +131,9 @@ public class ClientHomePageFragment extends Fragment {
                     }
                 });
 
-                }
+
+
+            }
 
 
             //}
@@ -154,6 +164,7 @@ public class ClientHomePageFragment extends Fragment {
         public TextView itemCookAddress;
         public TextView itemCookDescription;
         public TextView itemPrice;
+        public CardView itemCard;
 
         public MyViewHolder3(View itemView) {
             super(itemView);
@@ -168,6 +179,7 @@ public class ClientHomePageFragment extends Fragment {
             itemCookAddress= itemView.findViewById(R.id.cookAddressc);
             itemCookDescription= itemView.findViewById(R.id.cookDescriptionIdc);
             itemPrice= itemView.findViewById(R.id.priceMealc);
+            itemCard = itemView.findViewById(R.id.meal_card);
         }
     }
 }

@@ -4,7 +4,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="140dp"
     android:layout_marginTop="5dp"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
@@ -17,7 +17,7 @@
 
 
     <LinearLayout
-        android:layout_width="357dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
@@ -34,11 +34,12 @@
 
                 <TextView
                     android:id="@+id/mealN0"
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Meal Name"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
 
                 <ImageButton
                     android:id="@+id/imgPlusButtonP"
@@ -56,7 +57,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="42dp"
         >
 
@@ -77,10 +78,19 @@
 
             <TextView
                 android:id="@+id/mealStatusC"
-                android:layout_width="200dp"
-                android:layout_height="21dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/review_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:text="Review" />
+
         </LinearLayout>
 
     </LinearLayout>
