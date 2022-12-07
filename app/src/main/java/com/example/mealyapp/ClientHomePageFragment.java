@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,7 +43,7 @@ public class ClientHomePageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_client_home_page, container, false);
 
-        Button btn1= view.findViewById(R.id.btn_Vp);
+        Button btn1 = view.findViewById(R.id.btn_Vp);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +51,20 @@ public class ClientHomePageFragment extends Fragment {
                 fragmentTransaction.add(R.id.fragmentContainer, new ClientPurchasesFragment()).addToBackStack("ClientPurchasesFragment").commit();
             }
         });
+
+        Button logoutButton = view.findViewById(R.id.logout_button);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(getActivity(), "logged out", Toast.LENGTH_SHORT).show();
+                FragmentManager fragmentManager= getParentFragmentManager();
+                FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.fragmentContainer, new StartFragment()).addToBackStack(null).commit();
+            }
+        });
+
+
         return view;
     }
 

@@ -245,7 +245,6 @@
                 android:id="@+id/rating_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="5.0"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -259,7 +258,18 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="20dp" />
 
+            <Button
+                android:id="@+id/review_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:text="Review"
+                android:layout_gravity="right"
+                android:layout_margin="10dp" />
+
         </LinearLayout>
+
+
 
     </RelativeLayout>
 

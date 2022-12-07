@@ -51,7 +51,7 @@ public class AdminFragment extends Fragment {
                 Toast.makeText(getActivity(), "Logged out", Toast.LENGTH_SHORT).show();
                 FragmentManager fragmentManager= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.fragmentContainer, new StartFragment()).addToBackStack(null).commit();
+                fragmentTransaction.replace(R.id.fragmentContainer, new StartFragment()).addToBackStack(null).commit();
             }
         });
         return v;
