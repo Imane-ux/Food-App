@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 public class CookProfileFragment extends Fragment {
 
     FirebaseAuth mAuth;
-    TextView firstNameText, lastNameText, emailText, addressText, descriptionText;
+    TextView firstNameText, lastNameText, emailText, addressText, descriptionText, ratingText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,6 +34,7 @@ public class CookProfileFragment extends Fragment {
         emailText = view.findViewById(R.id.email_text);
         addressText = view.findViewById(R.id.address_text);
         descriptionText = view.findViewById(R.id.description_text);
+        ratingText = view.findViewById(R.id.rating_text);
 
         cookDetails(mAuth.getCurrentUser().getUid());
 
@@ -52,8 +53,9 @@ public class CookProfileFragment extends Fragment {
                 String email = String.valueOf(snapshot.child("email").getValue());
                 String address = String.valueOf(snapshot.child("address").getValue());
                 String description = String.valueOf(snapshot.child("description").getValue());
+                String rating = String.valueOf(snapshot.child("rating").getValue());
 
-                setTexts(firstName, lastName, email, address, description);
+                setTexts(firstName, lastName, email, address, description, rating);
             }
 
             @Override
@@ -63,11 +65,17 @@ public class CookProfileFragment extends Fragment {
         });
     }
 
-    public void setTexts(String firstName, String lastName, String email, String address, String description){
+    public void setTexts(String firstName, String lastName, String email, String address, String description, String rating){
         firstNameText.setText(firstName);
         lastNameText.setText(lastName);
         emailText.setText(email);
         addressText.setText(address);
         descriptionText.setText(description);
+
+        try {
+            if (Double.parseDouble(rating) > 0.0) {
+                ratingText.setText(rating);
+            }
+        } catch(Exception e) {}
     }
 }
