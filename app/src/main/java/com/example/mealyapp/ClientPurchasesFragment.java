@@ -39,51 +39,51 @@ public class ClientPurchasesFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         refp = FirebaseDatabase.getInstance().getReference("Purchase Requests");
-        recyclerV= getActivity().findViewById(R.id.recyclerPurchaseRequest);
+        recyclerV= getActivity().findViewById(R.id.recyclerPurchaseRequest2);
         recyclerV.setHasFixedSize(true);
         layoutM= new LinearLayoutManager(getActivity());
         recyclerV.setLayoutManager(layoutM);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseRecyclerOptions<PurchaseRequest> options = new FirebaseRecyclerOptions.Builder<PurchaseRequest>()
-                .setQuery(refp.child(mAuth.getUid()), PurchaseRequest.class).build();
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        FirebaseRecyclerOptions<PurchaseRequest> options = new FirebaseRecyclerOptions.Builder<PurchaseRequest>()
+//                .setQuery(refp.child(mAuth.getUid()), PurchaseRequest.class).build();
+//
+//        FirebaseRecyclerAdapter<PurchaseRequest, MyViewHolder4> madapterP = new FirebaseRecyclerAdapter<PurchaseRequest, MyViewHolder4>(options) {
+//            @Override
+//            protected void onBindViewHolder(@NonNull MyViewHolder4 holder, int position, @NonNull PurchaseRequest model) {
+//
+//                final String ClientID= getRef(position).getKey();
+//                holder.itemMealName.setText(model.getMeal());
+//                holder.itemMealStatus.setText(model.getStatus());
+//                holder.add.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Toast.makeText(getActivity(), "Not yet implemented, but should allow you to make a complaint and add a rating", Toast.LENGTH_LONG).show();
+//                    }
+//                });
+//            }
+//
+//            @NonNull
+//            @Override
+//            public MyViewHolder4 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.purchaserequest_view, parent, false);
+//                MyViewHolder4 vh = new MyViewHolder4(view);
+//                return vh;
+//            }
+//        };
+//        madapterP.startListening();
+//        recyclerV.setAdapter(madapterP);
+//    }
 
-        FirebaseRecyclerAdapter<PurchaseRequest, MyViewHolder4> madapterP = new FirebaseRecyclerAdapter<PurchaseRequest, MyViewHolder4>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull MyViewHolder4 holder, int position, @NonNull PurchaseRequest model) {
-
-                final String ClientID= getRef(position).getKey();
-                holder.itemMealName.setText(model.getMeal());
-                holder.itemMealStatus.setText(model.getStatus());
-                holder.add.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getActivity(), "Not yet implemented, but should allow you to make a complaint and add a rating", Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-
-            @NonNull
-            @Override
-            public MyViewHolder4 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.purchaserequest_view, parent, false);
-                MyViewHolder4 vh = new MyViewHolder4(view);
-                return vh;
-            }
-        };
-        madapterP.startListening();
-        recyclerV.setAdapter(madapterP);
-    }
 
 
     public static class MyViewHolder4 extends RecyclerView.ViewHolder {
         public TextView itemMealName;
         public TextView itemMealStatus;
         ImageButton add;
-
 
         public MyViewHolder4(View itemView) {
             super(itemView);

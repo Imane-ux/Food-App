@@ -27,13 +27,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.908" />
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerPurchaseRequest"
             android:layout_width="408dp"
             android:layout_height="485dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/offeredmeal_clientview">>
@@ -53,17 +54,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.997" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="37dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_search_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.021" />
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView2"-->
+<!--            android:layout_width="37dp"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:src="@drawable/ic_search_24"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.021" />-->
 
         <Button
             android:id="@+id/button4"
@@ -78,32 +79,42 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.064" />
 
-        <EditText
-            android:id="@+id/keywords"
-            android:layout_width="277dp"
-            android:layout_height="41dp"
-            android:ems="10"
-            android:hint="Type in keywords"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.259"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.015" />
+<!--        <EditText-->
+<!--            android:id="@+id/keywords"-->
+<!--            android:layout_width="277dp"-->
+<!--            android:layout_height="41dp"-->
+<!--            android:ems="10"-->
+<!--            android:hint="Type in keywords"-->
+<!--            android:inputType="textPersonName"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.259"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.015" />-->
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="70dp"
-            android:layout_height="39dp"
-            android:background="@drawable/round_btn"
-            android:src="@drawable/ic_baseline_search_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.921"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.013" />
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            app:queryHint="Search"/>
+
+
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="39dp"-->
+<!--            android:background="@drawable/round_btn"-->
+<!--            android:src="@drawable/ic_baseline_search_24"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.921"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.013" />-->
 
         <Button
             android:id="@+id/logout_button"

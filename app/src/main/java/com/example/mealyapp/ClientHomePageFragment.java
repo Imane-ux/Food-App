@@ -2,6 +2,8 @@ package com.example.mealyapp;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -25,16 +28,20 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Locale;
 
-public class ClientHomePageFragment extends Fragment {
+
+public class ClientHomePageFragment<searchView> extends Fragment {
 
     FirebaseAuth mAuth;
     private RecyclerView recyclerView2;
     private RecyclerView.LayoutManager layoutManager2;
     private DatabaseReference ref2;
     private FirebaseRecyclerAdapter<Meal, MyViewHolder3> madapter2;
+    SearchView searchView;
 
 
     @Override
@@ -42,6 +49,8 @@ public class ClientHomePageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_client_home_page, container, false);
+
+        searchView = view.findViewById(R.id.searchView);
 
         Button btn1 = view.findViewById(R.id.btn_Vp);
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +60,8 @@ public class ClientHomePageFragment extends Fragment {
                 fragmentTransaction.add(R.id.fragmentContainer, new ClientPurchasesFragment()).addToBackStack("ClientPurchasesFragment").commit();
             }
         });
+
+
 
         Button logoutButton = view.findViewById(R.id.logout_button);
         logoutButton.setOnClickListener(new View.OnClickListener() {
@@ -68,9 +79,11 @@ public class ClientHomePageFragment extends Fragment {
         return view;
     }
 
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         ref2 = FirebaseDatabase.getInstance().getReference("Meals To Clients");
         recyclerView2= getActivity().findViewById(R.id.recyclerPurchaseRequest);
         recyclerView2.setHasFixedSize(true);
@@ -88,7 +101,7 @@ public class ClientHomePageFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder3 holder, int position, @NonNull Meal model) {
 
-                final String mealCookID= getRef(position).getKey();
+                final String mealCookID = getRef(position).getKey();
                 //DatabaseReference re = ref2.child(mealCookID);
 
                 holder.itemName.setText(model.getName());
@@ -98,7 +111,7 @@ public class ClientHomePageFragment extends Fragment {
                 holder.itemAllergens.setText(model.getAllergens());
                 holder.itemPrice.setText(model.getPrice());
                 holder.itemDescription.setText(model.getDescription());
-                String cookUID= model.getCookId();
+                String cookUID = model.getCookId();
 
 
                 /*final String cookUID;
@@ -112,42 +125,40 @@ public class ClientHomePageFragment extends Fragment {
                 re1.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String name= String.valueOf(snapshot.child("firstName").getValue());
-                        String address= String.valueOf(snapshot.child("address").getValue());
-                        String description= String.valueOf(snapshot.child("description").getValue());
+                        String name = String.valueOf(snapshot.child("firstName").getValue());
+                        String address = String.valueOf(snapshot.child("address").getValue());
+                        String description = String.valueOf(snapshot.child("description").getValue());
                         holder.itemCookName.setText(name);
                         holder.itemCookAddress.setText(address);
                         holder.itemCookDescription.setText(description);
 
-                        holder.itemCard.setOnClickListener(new View.OnClickListener(){
+                        holder.itemCard.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void onClick(View v){
+                            public void onClick(View v) {
                                 FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
                                 fragmentTransaction.add(R.id.fragmentContainer, new MealDetailsFragment(model, snapshot)).addToBackStack("MealDetailsFragment").commit();
                             }
                         });
                     }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                        }
-                    });
+                    }
+                });
 
                 holder.add.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         String userID = mAuth.getInstance().getCurrentUser().getUid();
                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Purchase Requests").child(userID);
-                        String id= ref.push().getKey();
+                        String id = ref.push().getKey();
                         ref.child(id).setValue(new PurchaseRequest(model.getName()));
 
                         DatabaseReference reff = FirebaseDatabase.getInstance().getReference("Requests");
-                        reff.child(cookUID).setValue(new Request( userID, model.getName()));
+                        reff.child(cookUID).setValue(new Request(userID, model.getName()));
                     }
                 });
-
-
 
             }
 
@@ -166,6 +177,31 @@ public class ClientHomePageFragment extends Fragment {
         recyclerView2.setAdapter(madapter2);
 
     }
+
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        ref2 = FirebaseDatabase.getInstance().getReference("Meals To Clients");
+//        recyclerView2= getActivity().findViewById(R.id.recyclerPurchaseRequest);
+//        recyclerView2.setHasFixedSize(true);
+//        layoutManager2= new LinearLayoutManager(getActivity());
+//        recyclerView2.setLayoutManager(layoutManager2);
+//    }
+
+
+    private void firebaseSearch(String searchtext) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Meals To Clients");
+
+        String query = searchtext.toLowerCase();
+        Query firebaseQuery = databaseReference.orderByChild("name").startAt(query).endAt(query + "\uf8ff");
+
+
+            ref2 = FirebaseDatabase.getInstance().getReference("Meals To Clients");
+            recyclerView2= getActivity().findViewById(R.id.recyclerPurchaseRequest);
+            recyclerView2.setHasFixedSize(true);
+            layoutManager2= new LinearLayoutManager(getActivity());
+            recyclerView2.setLayoutManager(layoutManager2);
+        }
 
 
     public static class MyViewHolder3 extends RecyclerView.ViewHolder {
