@@ -2,8 +2,20 @@
 
 ### SEG 2105 - Introduction to Software Engineering
 
+All you need for deliverable 4:
+At this point, all users can be created from the app, so you don't really need any coordinates. You'll find below the admin coordinates and some previous cook accounts.
+Here's a  client account:  Email: c3@cook.ca
+                                        Password: 123456
+<p> 
+Imane Amine - 300251048 <br>
+Nida Taj - 300239050 <br>
+Noah Ndahirwa - 300152285 <br>
+Steven Wilson - 300220675 <br>
+</p>
 
-All you need for deliverable 3:
+
+
+All you need for deliverable 3:                                    
 *Administrator coordinates: Email: admin@admin.ca
                             Password: group28
 - a cook account that was banned permanently: Email: co@cook.ca
@@ -34,12 +46,6 @@ All you need for delivarable 2:
 - if cook's UID= RprrUuube2duzrCxL8L8joxeowF2;  Email:    four@four.ca
                                                 Password: 123456                                              
 
-<p> 
-Imane Amine - 300251048 <br>
-Nida Taj - 300239050 <br>
-Noah Ndahirwa - 300152285 <br>
-Steven Wilson - 300220675 <br>
-</p>
 
 <p>
 We developed an Ottawa-based meal sharing application called “Mealy-App” where local cooks
