@@ -5,6 +5,10 @@ public class Request {
     String mealName;
 
     public Request() {
+
+    }
+    public Request(String mealName) {
+
     }
 
     public Request(String clientUID, String mealName) {

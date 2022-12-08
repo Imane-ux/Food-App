@@ -6,29 +6,39 @@
     android:layout_height="match_parent"
     android:background="#FFC107"
     android:backgroundTint="#FF9800"
-    tools:context=".CooksRequests">
-
-
+    tools:context=".ClientPurchasesFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCookPurchaseRequest"
+            android:layout_width="408dp"
+            android:layout_height="485dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.422"
+            tools:listitem="@layout/meal_requests">>
+
+        </androidx.recyclerview.widget.RecyclerView>
+
         <TextView
             android:id="@+id/textView16"
             android:layout_width="302dp"
             android:layout_height="54dp"
-            android:text="Your Purchase Requests"
+            android:text="Your Meal Requests"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.026" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button3"
@@ -43,12 +53,34 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.1" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="407dp"
-            android:layout_height="449dp"
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="134dp"
+            android:layout_height="42dp"
+            android:backgroundTint="@color/black"
+            android:text="Back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_pending"
+            app:layout_constraintVertical_bias="0.235" />
+
+        <Button
+            android:id="@+id/btn_pending"
+            android:layout_width="241dp"
+            android:layout_height="51dp"
+            android:layout_marginBottom="76dp"
+            android:backgroundTint="@color/black"
+            android:text="Pending Orders"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintVertical_bias="1.0" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>
+
+
